@@ -21,6 +21,7 @@
     'depends': [
         'base',
         'mail',
+        'account',
         
     ],
 
