@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_bankbook,account.bankbook,model_account_bankbook,account.group_account_manager,1,1,1,1
+access_account_move_line_search,account.move.line.search,model_account_move_line_search,account.group_account_manager,1,1,1,1
+access_account_move_line_found,account.move.line.found,model_account_move_line_found,account.group_account_manager,1,1,1,1
+
