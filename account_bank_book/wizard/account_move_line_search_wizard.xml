@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Main Account Move Line Search wizard FROM view-->
+    <record id="account_move_line_search_wizard_form_view" model="ir.ui.view">
+        <field name="name">account_move_line_search_wizard_form_view</field>
+        <field name="model">account.move.line.search</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="group_top">
+                    <field name="date_from" />    
+                    <field name="date_to" />    
+                    <field name="domain" widget="domain" options="{'model': 'account.move.line', 'in_dialog': true}"/>
+                </group>
+                <group name="group_botton">
+                    <field name="account_move_line_found_ids" />
+                </group>
+                <footer>
+                    <button type="object" name="account_move_line_search" string="Search" />
+                    <button type="object" name="account_move_line_save" string="Save" attrs="{'invisible': [('account_move_line_found_ids', '=', [])]}" />
+                    <button special="cancel" string="Cancel" class="btn-primary" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Main Account Move Line Found wizard Tree view-->
+    <record id="account_move_line_found_wizard_tree_view" model="ir.ui.view">
+        <field name="name">account_move_line_found_wizard_tree_view</field>
+        <field name="model">account.move.line.found</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="real_date" />
+                <field name="account_move_line_id" />
+                <button name="unlink_found" string="Unlink" type="object" class="btn-secondary" icon="fa-trash-o" />
+            </tree>
+        </field>
+    </record>
+</odoo>

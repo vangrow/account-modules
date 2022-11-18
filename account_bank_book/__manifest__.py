@@ -27,7 +27,11 @@
 
     # always loaded
     'data': [
-        # 'view/res_partner_view.xml',
+        'security/ir.model.access.csv',
+        'views/account_bank_book_view.xml',
+        'views/res_config_settings_view.xml',
+        'wizard/account_move_line_search_wizard.xml',
+        'wizard/account_move_line_found_wizard.xml',
     ],
 
     'installable': True,

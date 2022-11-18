@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Main Account BankBook FORM view-->
+    <record id="account_bankbook_form_view" model="ir.ui.view">
+        <field name="name">account_bankbook_form_view</field>
+        <field name="model">account.bankbook</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group name="group_top">
+                        <group name="group_top_left">
+                            <field name="date_real_move" />
+                            <field name="account_move_line_id" />
+                        </group>
+                        <group name="group_top_right"></group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Account BankBook PIVOT view -->
+    <record id="account_bankbook_pivot_view" model="ir.ui.view">
+        <field name="name">account_bankbook_pivot_view</field>
+        <field name="model">account.bankbook</field>
+        <field name="arch" type="xml">
+            <pivot></pivot>
+        </field>
+    </record>
+
+    <!-- Account BankBook TREE view -->
+    <record id="account_bankbook_tree_view" model="ir.ui.view">
+        <field name="name">account_bankbook_tree_view</field>
+        <field name="model">account.bankbook</field>
+        <field name="arch" type="xml">
+            <tree edit='false' create='false'>
+                <field name="date_real_move" optional="show" />
+                <field name="account_move_line_id" optional="hide" />
+                <field name="date" optional="hide" />
+                <field name="date_maturity" optional="hide" />
+                <field name="journal_id" optional="show" />
+                <field name="move_id" optional="show" />
+                <field name="account_id" optional="show" />
+                <field name="partner_id" optional="show" />
+                <field name="ref" optional="show" />
+                <field name="name" optional="show" />
+                <field name="currency_id" attrs="{'column_invisible': 1}" />
+                <field name="debit" widget="monetary" options="{'currency_field': 'currency_id'}" optional="show" />
+                <field name="credit" widget="monetary" options="{'currency_field': 'currency_id'}" optional="show" />
+                <field name="balance" widget="monetary" options="{'currency_field': 'currency_id'}" optional="show" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Account BankBook SEARCH view -->
+    <record id="account_bankbook_search_view" model="ir.ui.view">
+        <field name="name">account_bankbook_search</field>
+        <field name="model">account.bankbook</field>
+        <field name="arch" type="xml">
+            <search string="Bank Book">
+                <separator name="bank" />
+                <group expand="0" string="Group By..."></group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Account BankBook ACTIONS window -->
+    <record id="account_bankbook_menu" model="ir.actions.act_window">
+        <field name="name">Account Bank Book</field>
+        <field name="res_model">account.bankbook</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="target">main</field>
+        <field name="domain">[('search_ids','=',1)]</field>
+    </record>
+
+    <!-- Account BankBook Generate ACTIONS window -->
+    <record id="account_bankbook_generate_menu" model="ir.actions.act_window">
+        <field name="name">Generate Account Bank Book</field>
+        <field name="res_model">account.move.line.search</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Account BankBook Title Menu -->
+    <menuitem id="account_bankbook_title_menu" name="Account Bank Book" parent="account.menu_finance_entries" sequence="199" />
+    <!-- Account BankBook Menu -->
+    <menuitem id="account_bankbook_menu" name="Account BankBook" parent="account_bankbook_title_menu" action="account_bankbook_menu" sequence="199" />
+    <!-- Account BankBook Generation Menu -->
+    <menuitem id="account_bankbook_generation_menu" name="Generate Account BankBook" parent="account_bankbook_title_menu" action="account_bankbook_generate_menu" sequence="210" groups="base.group_no_one" />
+
+
+</odoo>
