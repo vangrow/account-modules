@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_export_direct_debit_wizard_manager,export.direct.debit.wizard,model_export_direct_debit_wizard,account.group_account_invoice,1,1,1,1
+access_direct_debit_file_manager,direct.debit.file,model_direct_debit_file,account.group_account_invoice,1,1,1,1
+access_response_direct_debit_file_manager,response.direct.debit.file,model_response_direct_debit_file,account.group_account_invoice,1,1,1,1

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="nbsf_payment_acquirer" model="payment.acquirer">
+            <field name="name">Nuevo Banco de Santa Fe</field>
+            <field name="image_128" type="base64" file="payment_bank_debit/static/src/img/nbsf_logo.png" />
+            <field name="provider">nbsfdd</field>
+            <field name="description" type="html">
+                <p>
+                    Débitos directos Nuevo Banco de Santa Fe
+                </p>
+            </field>
+        </record>
+        <record id="nbsf_account_payment_method" model="account.payment.method">
+            <field name="name">NBSF Debitos Directos</field>
+            <field name="code">nbsfdd</field>
+            <field name="payment_type">inbound</field>
+        </record>
+    </data>
+</odoo>

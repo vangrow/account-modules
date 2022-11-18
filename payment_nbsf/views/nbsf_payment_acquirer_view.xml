@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- NBSF Payment Acquirer FORM view -->
+    <record model="ir.ui.view" id="nbsf_payment_acquirer_form_view">
+        <field name="name">nbsf_payment_acquirer_form_view</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.payment_acquirer_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='configuration']" position="before">
+                <page string="NBSF Configuration" name="nbsf_configuration" attrs="{'invisible': [('provider', '!=', 'nbsfdd')]}">
+                    <group>
+                        <group attrs="{'invisible': [('provider', '!=', 'nbsfdd')]}" string="Banco Santa Fe Débitos">
+                            <field name="nbsf_header" attrs="{'required': [('provider', '=', 'nbsfdd')]}" />
+                            <field name="nbsf_company" attrs="{'required': [('provider', '=', 'nbsfdd')]}" />
+                            <field name="nbsf_agreedment" attrs="{'required': [('provider', '=', 'nbsfdd')]}" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

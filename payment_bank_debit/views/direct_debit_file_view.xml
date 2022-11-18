@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Direct Debit File FORM view -->
+        <record model="ir.ui.view" id="direct_debit_file_form_view">
+            <field name="name">direct_debit_file_form_view</field>
+            <field name="model">direct.debit.file</field>
+            <field name="arch" type="xml">
+                <form create="false">
+                    <header></header>
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_top_left">
+                                <field name="name" />
+                                <field name="date" />
+                                <field name="count" />
+                                <field name="currency_id" invisible="1" />
+                                <field name="total" widget='monetary' />
+                            </group>
+                            <group name="group_top_right">
+                                <field name="file" filename="name" />
+                                <field name="payment_acquirer_id" />
+                                <field name="next_business_days" />
+                                <field name="description" />
+                            </group>
+                        </group>
+                        <group name="gorup_bottom">
+                            <field name="response_direct_debit_file_ids" />
+                        </group>
+                    </sheet>
+                    <!-- mail mixin fields -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="activity_ids" widget="mail_activity" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Direct Debit File TREE view -->
+        <record model="ir.ui.view" id="direct_debit_file_tree_view">
+            <field name="name">direct_debit_file_tree_view</field>
+            <field name="model">direct.debit.file</field>
+            <field name="arch" type="xml">
+                <tree create="false" edit="false">
+                    <field name="name" />
+                    <field name="description" optional="show" />
+                    <field name="date" />
+                    <field name="payment_acquirer_id" optional="show" />
+                    <field name="count" optional="hide" />
+                    <field name="currency_id" invisible="1" />
+                    <field name="next_business_days" invisible="1" />
+                    <field name="total" widget='monetary' optional="hide" />
+                    <field name="file" filename="name" optional="hide" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Direct Debit File ACTIONS window -->
+        <record id="action_direct_debit_file" model="ir.actions.act_window">
+            <field name="name">Direct Debit Files</field>
+            <field name="res_model">direct.debit.file</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Direct Debit File Menu -->
+        <menuitem id="direct_debit_file_menu" name="Direct Debit Files" parent="account.menu_finance_receivables" action="action_direct_debit_file" sequence="220" />
+
+    </data>
+</odoo>

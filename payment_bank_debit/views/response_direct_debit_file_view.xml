@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Response Direct Debit File FORM view -->
+        <record model="ir.ui.view" id="response_direct_debit_file_form_view">
+            <field name="name">response_direct_debit_file_form_view</field>
+            <field name="model">response.direct.debit.file</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_post" string="Post" class="oe_highlight" type="object" groups="account.group_account_invoice" data-hotkey="v" attrs="{'invisible': ['|',('state', '!=', 'draft'),('file','=',False)]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
+                    </header>
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_top_left">
+                                <field name="name" attrs="{'readonly': [('state','=','posted')]}"/>
+                                <field name="file_number" />
+                                <field name="date" />
+                                <field name="count" />
+                                <field name="total" widget='monetary'/>
+                                <field name="total_ok" widget='monetary'/>
+                                <field name="payment_count_ok" />
+                                <field name="payment_count_ko" />
+                                </group>
+                            <group name="group_top_right">
+                                <field name="file" filename="name" attrs="{'readonly': [('state','=','posted')]}"/>
+                                <field name="direct_debit_file_id"/>
+                                <field name="payment_acquirer_id" />
+                                <field name="description" />
+                            </group>
+                        </group>
+                    </sheet>
+                    <!-- mail mixin fields -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="activity_ids" widget="mail_activity" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Response Direct Debit File TREE view -->
+        <record model="ir.ui.view" id="response_direct_debit_file_tree_view">
+            <field name="name">response_direct_debit_file_tree_view</field>
+            <field name="model">response.direct.debit.file</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="file_number" optional="show"/>
+                    <field name="description" optional="hide"/>
+                    <field name="file" filename="name" optional="hide"/>
+                    <field name="date" />
+                    <field name="payment_acquirer_id" optional="hide" />
+                    <field name="direct_debit_file_id" optional="hide" />
+                    <field name="count" optional="show"/>
+                    <field name="total" widget='monetary' optional="hide"/>
+                    <field name="total_ok" widget='monetary' optional="hide"/>
+                    <field name="payment_count_ok" optional="hide"/>
+                    <field name="payment_count_ko" optional="hide"/>
+                    <field name="state" widget="badge" decoration-success="state == 'posted'" decoration-info="state == 'draft'" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>
