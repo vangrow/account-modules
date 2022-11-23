@@ -24,7 +24,6 @@
         'account',
         'payment',
         'account_payment_partner',
-        'partner_ref_unique',
     ],
 
     # always loaded
