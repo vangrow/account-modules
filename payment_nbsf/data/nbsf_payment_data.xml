@@ -3,7 +3,7 @@
     <data noupdate="1">
         <record id="nbsf_payment_acquirer" model="payment.acquirer">
             <field name="name">Nuevo Banco de Santa Fe</field>
-            <field name="image_128" type="base64" file="payment_bank_debit/static/src/img/nbsf_logo.png" />
+            <field name="image_128" type="base64" file="payment_nbsf/static/src/img/nbsf_logo.png" />
             <field name="provider">nbsfdd</field>
             <field name="description" type="html">
                 <p>

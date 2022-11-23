@@ -13,5 +13,18 @@
             </field>
         </field>
     </record>
+
+    <!-- Res Partner Bank TREE view -->
+    <record id="res_partner_bank_tree_view" model="ir.ui.view">
+        <field name="name">res_partner_bank_tree_view</field>
+        <field name="model">res.partner.bank</field>
+        <field name="inherit_id" ref="base.view_partner_bank_tree" />
+        <field name="arch" type="xml">
+            <field name="bank_name" position="after">
+                <field name='account_type' optional="show" />
+                <field name='branch_number' optional="hide" />
+            </field>
+        </field>
+    </record>
     
 </odoo>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="0">
+    <data noupdate="1">
         <record id="credicoop_payment_acquirer" model="payment.acquirer">
             <field name="name">Banco Credicoop Coop. Ltdo.</field>
-            <field name="image_128" type="base64" file="payment_bank_debit/static/src/img/credicoop_logo.png" />
-            <field name="provider">ccoopdd</field>
+            <field name="image_128" type="base64" file="payment_credicoop/static/src/img/credicoop_logo.png" />
+            <field name="provider">bccoopdd</field>
             <field name="description" type="html">
                 <p>
                     Débitos directos Banco Credicoop Coop. Ltdo.
@@ -13,7 +13,7 @@
         </record>
         <record id="credicoop_account_payment_method" model="account.payment.method">
             <field name="name">Credicoop Debitos Directos</field>
-            <field name="code">ccoopdd</field>
+            <field name="code">bccoopdd</field>
             <field name="payment_type">inbound</field>
         </record>
     </data>

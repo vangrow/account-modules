@@ -7,12 +7,12 @@
         <field name="inherit_id" ref="payment.payment_acquirer_form" />
         <field name="arch" type="xml">
             <xpath expr="//page[@name='configuration']" position="before">
-                <page string="Credicoop Configuration" name="credicoop_configuration" attrs="{'invisible': [('provider', '!=', 'ccoopdd')]}">
+                <page string="Credicoop Configuration" name="credicoop_configuration" attrs="{'invisible': [('provider', '!=', 'bccoopdd')]}">
                     <group>
-                        <group attrs="{'invisible': [('provider', '!=', 'ccoopdd')]}" string="Banco Credicoop Débitos">
-                            <field name="credicoop_company" attrs="{'required': [('provider', '=', 'ccoopdd')]}" />
-                            <field name="credicoop_frequency" attrs="{'required': [('provider', '=', 'ccoopdd')]}" />
-                            <field name="credicoop_bank" attrs="{'required': [('provider', '=', 'ccoopdd')]}" />
+                        <group attrs="{'invisible': [('provider', '!=', 'bccoopdd')]}" string="Banco Credicoop Débitos">
+                            <field name="credicoop_company" attrs="{'required': [('provider', '=', 'bccoopdd')]}" />
+                            <field name="credicoop_frequency" attrs="{'required': [('provider', '=', 'bccoopdd')]}" />
+                            <field name="credicoop_bank" attrs="{'required': [('provider', '=', 'bccoopdd')]}" />
                         </group>
                     </group>
                 </page>

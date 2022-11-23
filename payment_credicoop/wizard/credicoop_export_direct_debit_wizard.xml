@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Credicoop Export Direct Debit Wizard FORM View -->
+    <record id="credicoop_export_direct_debit_form_view" model="ir.ui.view">
+        <field name="name">credicoop_export_direct_debit_form_view</field>
+        <field name="model">export.direct.debit.wizard</field>
+        <field name="inherit" ref="payment_bank_debit.export_direct_debit_form_view"/>
+        <field name="arch" type="xml">
+            
+        </field>
+    </record>
+</odoo>

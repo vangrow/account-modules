@@ -24,14 +24,6 @@ class PaymentAcquirer(models.Model):
         string="Agreedment",
     )
 
-    @api.depends('provider')
-    def _compute_view_configuration_fields(self):
-        """ Override of payment to hide the credentials page.
-        :return: None
-        """
-        super()._compute_view_configuration_fields()
-        self.filtered(lambda acq: acq.provider == 'nbsfdd').show_credentials_page = False
-
     def _get_default_payment_method_id(self):
         self.ensure_one()
         if self.provider != 'nbsfdd':

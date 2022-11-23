@@ -12,7 +12,8 @@ class DirectDebitFile(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(
-        string="Name"
+        string="Name",
+        readonly=True
     )
     payment_acquirer_id = fields.Many2one(
         comodel_name="payment.acquirer",

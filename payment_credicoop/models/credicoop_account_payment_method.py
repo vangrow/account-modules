@@ -9,5 +9,5 @@ class AccountPaymentMethod(models.Model):
     @api.model
     def _get_payment_method_information(self):
         res = super()._get_payment_method_information()
-        res['ccoopdd'] = {'mode': 'multi', 'domain': [('type', '=', 'bank')]}
+        res['bccoopdd'] = {'mode': 'unique', 'domain': [('type', '=', 'bank')]}
         return res

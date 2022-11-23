@@ -23,17 +23,8 @@ class PaymentAcquirer(models.Model):
         string="Bank",
     )
 
-
-    @api.depends('provider')
-    def _compute_view_configuration_fields(self):
-        """ Override of payment to hide the credentials page.
-        :return: None
-        """
-        super()._compute_view_configuration_fields()
-        self.filtered(lambda acq: acq.provider == 'ccoopdd').show_credentials_page = False
-
     def _get_default_payment_method_id(self):
         self.ensure_one()
-        if self.provider != 'ccoopdd':
+        if self.provider != 'bccoopdd':
             return super()._get_default_payment_method_id()
         return self.env.ref('payment_credicoop.credicoop_account_payment_method').id

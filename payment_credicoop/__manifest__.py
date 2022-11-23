@@ -12,7 +12,7 @@
         Configuración:
             - 1) Instalar el módulo
             - 2) Configurar el Método de pago
-            - 3) Crear Modo de pago
+            - 3) Crear los Modos de pago
             - 4) Asignar Modo de pago al cliente
     """,
 
@@ -30,12 +30,14 @@
         'mail',
         'account',
         'payment',
+        'payment_bank_debit',
     ],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/credicoop_payment_acquirer_view.xml',
+        #'wizard/nbsf_export_direct_debit_wizard.xml',
         'data/credicoop_payment_data.xml',
         
     ],
