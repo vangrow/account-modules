@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- BNA Payment Acquirer FORM view -->
+    <record model="ir.ui.view" id="bna_payment_acquirer_form_view">
+        <field name="name">bna_payment_acquirer_form_view</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.payment_acquirer_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='configuration']" position="before">
+                <page string="BNA Configuration" name="bna_configuration" attrs="{'invisible': [('provider', '!=', 'bnadd')]}">
+                    <group>
+                        <group attrs="{'invisible': [('provider', '!=', 'bnadd')]}" string="Banco de la Nación Argentina Débitos">
+                            <field name="bna_bank" attrs="{'required': [('provider', '=', 'bnadd')]}" />
+                            <field name="bna_acc_type" attrs="{'required': [('provider', '=', 'bnadd')]}" />
+                            <field name="bna_acc_number" attrs="{'required': [('provider', '=', 'bnadd')]}" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

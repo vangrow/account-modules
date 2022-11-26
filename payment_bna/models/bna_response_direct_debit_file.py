@@ -15,13 +15,13 @@ class ResponseDirectDebitFile(models.Model):
 
     def action_post(self):
         res = super(ResponseDirectDebitFile, self).action_post()
-        if self.payment_acquirer_id.provider == 'nbsfdd':  # Debitos Directo Nuevo Banco de Santa Fe
-            self.nbsf_file_process()
+        #if self.payment_acquirer_id.provider == 'nbsfdd':  # Debitos Directo Nuevo Banco de Santa Fe
+        #    self.nbsf_file_process()
         return res
 
     def nbsf_file_process(self):
         file_string = base64.b64decode(self.file).decode('utf-8').split('\n')
-
+        """
         # Registro Cabecera
         # 1 - Cabecera - tipo: numérico - long.: 4 - decimales: 0
         header = file_string[0][:4]
@@ -93,3 +93,4 @@ class ResponseDirectDebitFile(models.Model):
         self.payment_count_ko = payment_ko
         self.total_ok = total_ok
         self.state = 'posted'
+        """

@@ -20,12 +20,12 @@ class ExportDirectDebitWizard(models.TransientModel):
    
     def file_save(self):
         res = super(ExportDirectDebitWizard, self).file_save()
-        if self.payment_acquirer_id.provider == 'bccoopdd':  # Debitos Directo Banco Credicoop
-            self.credicoop_file_generator()
+        if self.payment_acquirer_id.provider == 'bnadd':  # Debitos Directo Banco de la Nación Argentina
+            self.bna_file_generator()
         return res
         
 
-    def credicoop_file_generator(self):
+    def bna_file_generator(self):
         # Registro Datos
         registry = {}
         total = 0.0
@@ -51,13 +51,35 @@ class ExportDirectDebitWizard(models.TransientModel):
                     'partner_id': invoice.partner_id.id,
                     'partner_name': invoice.partner_id.name,
                     'partner_country_id': invoice.partner_id.country_id.id,
-                    'partner_ref': invoice.partner_id.ref,
                     'company_name': self.env.user.company_id.name,
                     'date': self.file_date,
                 }
+            
+        
+        registry_1 = ''
+        # Registro 1
+        # 1 - Tipo de Registro - tipo: numérico - long.: 1 - decimales: 0
+        registry_1 += '1'
+        # 2 - Casa Sucursal - tipo: numérico - long.: 4 - decimales: 0
+        registry_1 +=  self.payment_acquirer_id.bna_bank[:4]
+        # 3 - Tipo de Cuenta - tipo: numérico - long.: 2 - decimales: 0
+        registry_1 +=  self.payment_acquirer_id.bna_acc_type[:2]
+        # 4 - Cuenta - tipo: numérico - long.: 10 - decimales: 0
+        registry_1 +=  self.payment_acquirer_id.bna_acc_number[:10]
+        # 5 - Moneda - tipo: alfanumérico - long.: 1 - decimales: 0
+        registry_1 +=  'P'
+        # 6 - Identificador - tipo: alfanumérico - long.: 1 - decimales: 0
+        registry_1 +=  'E'
+        # 7 - Secuencia - tipo: numérico - long.: 4 - decimales: 0
+        registry_1 +=  self.file_date.strftime("%m")[:2] + '01'
+        # 8 - Fecha imputación - tipo: numérico - long.: 8 - decimales: 0
+        registry_1 += (self.file_date + BDay(self.imputation_business_days)).strftime("%Y%m%d")[:8]
+        # 9 - Indicador de Empleados BNA - tipo: alfanumérico - long.: 3 - decimales: 0
+        registry_1 += 'REE'
+        registry_1 += "\r\n"
 
-
-        data_registry = ''
+        # Registro 2
+        registry_2 = ''
         for acc_number in registry:
             total_registry = 0.0
             invoice_ids = []
@@ -66,7 +88,7 @@ class ExportDirectDebitWizard(models.TransientModel):
                 invoice_ids.append(invoice)
                 total_registry = total_registry + \
                     registry[acc_number][invoice]['amount_residual']
-
+            
             # Paymen Transaction
             payment_transaction = self.env['payment.transaction']
             values = {
@@ -85,47 +107,47 @@ class ExportDirectDebitWizard(models.TransientModel):
             total = total + total_registry
             count += 1
 
-            # 1 - Empresa - tipo: numérico - long.: 2 - decimales: 0
-            data_registry += self.payment_acquirer_id.credicoop_company[:2]
-            # 2 - Frecuencia - tipo: alfanumérico - long.: 1 - decimales: 0
-            data_registry += self.payment_acquirer_id.credicoop_frequency[:1]
-            # 3 - Banco - tipo: numérico - long.: 3 - decimales: 0
-            data_registry += self.payment_acquirer_id.credicoop_bank[:3]
-            # 4 - Sucursal - tipo: numérico - long.: 3 - decimales: 0
-            data_registry += registry[acc_number][invoice]['branch_number'][:3]
-            # 5 - Tipo de Cuenta - tipo: numérico - long.: 1 - decimales: 0
-            data_registry += '0' if registry[acc_number][invoice]['account_type'] == 'cc' else '1'
-            # 6 - Número de Cuenta - tipo: numérico - long.: 7 - decimales: 0
-            data_registry += acc_number[:7]
-            # 7 - Año de Vencimiento - tipo: numérico - long.: 2 - decimales: 0
-            data_registry += self.file_date.strftime("%y")[:2]
-            # 8 - Mes/Cuota de Vto. - tipo: numérico - long.: 2 - decimales: 0
-            data_registry += self.file_date.strftime("%m")[:2]
-            # 9 - Fecha de Vto. - tipo: numérico - long.: 6 - decimales: 0
-            data_registry += self.file_date.strftime("%d%m%y")[:6]
-            # 10 - Turno - tipo: numérico - long.: 3 - decimales: 0
-            data_registry += '001'
-            # 11 - Identificador - tipo: numérico - long.: 18 - decimales: 0
-            data_registry += registry[acc_number][invoice]['partner_ref'].ljust(18, " ")[:18]
-            # 12 - Importe del Débito - tipo: numérico - long.: 11 - decimales: 2
-            data_registry += str(int(round(total_registry, 2) * 100)).rjust(11, "0")[:11]
-            # 13 - Importe 2 - tipo: numérico - long.: 11 - decimales: 2
-            data_registry += '0'.rjust(11, "0")[:11]
-            # 14 - Fecha de Pago - tipo: numérico - long.: 6 - decimales: 0
-            data_registry += '0'.rjust(6, "0")[:6]
-            # 15 - Resultado del Débito - tipo: alfnumérico - long.: 1 - decimales: 0
-            data_registry += ' '
-            # 16 - Moneda - tipo: alfnumérico - long.: 1 - decimales: 0
-            data_registry += 'P'
-            # 17 - Tipo de Débito - tipo: alfnumérico - long.: 1 - decimales: 0
-            data_registry += 'D'
-            # 18 - Filler - tipo: alfanumérico - long.: 11 - decimales: 0
-            data_registry += ' '
-            data_registry += "\r\n"
+            # 1 - Tipo de Registro - tipo: numérico - long.: 1 - decimales: 0
+            registry_2 += '2'
+            # 2 - Sucursal Banco Cliente - tipo: numérico - long.: 4 - decimales: 0
+            registry_2 += registry[acc_number][invoice]['branch_number'].rjust(4, "0")[:4]
+            # 3 - Typo de Cuenta - tipo: alfanumérico - long.: 2 - decimales: 0
+            registry_2 += 'CC' if registry[acc_number][invoice]['account_type'] == 'cc' else 'CA'
+            # 4 - Cuenta - tipo: numérico - long.: 11 - decimales: 0
+            registry_2 += acc_number.rjust(11, "0")[:11]
+            # 5 - Importe - tipo: numérico - long.: 15 - decimales: 2
+            registry_2 += str(int(round(total_registry, 2) * 100)).rjust(15, "0")[:15]
+            # 6 - Fecha de Vencimiento - tipo: numérico - long.: 8 - decimales: 0
+            registry_2 += '0'.rjust(8, "0")[:8]
+            # 7 - Estado - tipo: numérico - long.: 1 - decimales: 0
+            registry_2 += '0'
+            # 8 - Motivo de Rechazo - tipo: alfanumérico - long.: 30 - decimales: 0
+            registry_2 += ' '.ljust(30, " ")[:30]
+            # 9 - Concepto de Débito - tipo: alfanumérico - long.: 10 - decimales: 0
+            registry_2 += registry[acc_number][invoice]['company_name'].upper().ljust(10, " ")[:10]
+            # 10 - Filler - tipo: alfanumérico - long.: 46 - decimales: 0
+            registry_2 += ' '.ljust(46, " ")[:46]
+            registry_2 += "\r\n"
+
+        # Registro 3
+        registry_3 = ''
+        # 1 - Tipo de Registro - tipo: numérico - long.: 1 - decimales: 0
+        registry_3 += '3'
+        # 2 - Total a Debitar - tipo: numérico - long.: 15 - decimales: 2
+        registry_3 += str(int(round(total, 2) * 100)).rjust(15, "0")[:15]
+        # 3 - Cantidad de Registros - tipo: numérico - long.: 6 - decimales: 0
+        registry_3 +=  str(count).rjust(6, "0")[:6]
+        # 4 - Total Débitos no aplicados - tipo: numérico - long.: 15 - decimales: 2
+        registry_3 += '0'.rjust(15, "0")[:15]
+        # 4 - Cantidad de Registros no aplicados - tipo: numérico - long.: 6 - decimales: 0
+        registry_3 += '0'.rjust(6, "0")[:6]
+        # 5 - Filler - tipo: alfanumérico - long.: 85 - decimales: 0
+        registry_3 += ' '.ljust(85, " ")[:85]
+        registry_3 += "\r\n"
 
         # Direct Debit File
         direct_debit_file = self.env['direct.debit.file']
-        filename = "Credicoop" + self.payment_acquirer_id.credicoop_company + \
+        filename = "BNA" + self.payment_acquirer_id.company_id.name + \
             '-' + self.file_date.strftime("%d%m%y") + '.txt'
         values = {
             'name': filename,
@@ -133,7 +155,7 @@ class ExportDirectDebitWizard(models.TransientModel):
             'next_business_days': self.imputation_business_days,
             'count': count,
             'total': total,
-            'file': base64.b64encode("\n".join([data_registry]).encode('ascii')),
+            'file': base64.b64encode("\n".join([registry_1 + registry_2 + registry_3]).encode('ascii')),
             'payment_acquirer_id': self.payment_acquirer_id.id,
             'description': self.payment_mode_id.name + ' ' + filename + ' ' + self.file_date.strftime('%d/%m/%Y'),
         }
