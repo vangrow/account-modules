@@ -1,0 +1,472 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_bank_debit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20221110\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-28 12:10+0000\n"
+"PO-Revision-Date: 2022-11-28 12:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_account_setup_bank_manual_config__account_type
+#: model:ir.model.fields,field_description:payment_bank_debit.field_res_partner_bank__account_type
+msgid "Account Type"
+msgstr "Tipo de Cuenta"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_needaction
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_ids
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_exception_decoration
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_state
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_type_icon
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_attachment_count
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_account_setup_bank_manual_config__branch_number
+#: model:ir.model.fields,field_description:payment_bank_debit.field_res_partner_bank__branch_number
+msgid "Branch Number"
+msgstr "Número de Sucursal"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields.selection,name:payment_bank_debit.selection__res_partner_bank__account_type__ca
+msgid "Caja de Ahorro"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model_terms:ir.ui.view,arch_db:payment_bank_debit.export_direct_debit_form_view
+msgid "Cancel"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__create_uid
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__create_uid
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__create_date
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__create_date
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields.selection,name:payment_bank_debit.selection__res_partner_bank__account_type__cc
+msgid "Cuenta Corriente"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__date
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__date
+msgid "Date"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__description
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__direct_debit_file_id
+msgid "Direct Debit File"
+msgstr "Archivo Débitos Directos"
+
+#. module: payment_bank_debit
+#: model:ir.actions.act_window,name:payment_bank_debit.action_direct_debit_file
+#: model:ir.ui.menu,name:payment_bank_debit.direct_debit_file_menu
+msgid "Direct Debit Files"
+msgstr "Archivo Débitos Directos"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__display_name
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__display_name
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields.selection,name:payment_bank_debit.selection__response_direct_debit_file__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__count
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__count
+msgid "Entry Count"
+msgstr "Cantidad de Entradas"
+
+#. module: payment_bank_debit
+#: model:ir.actions.act_window,name:payment_bank_debit.action_wizard_export_direct_debit
+#: model_terms:ir.ui.view,arch_db:payment_bank_debit.export_direct_debit_form_view
+msgid "Export Direct Debit"
+msgstr "Exportar Débitos Directos"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__file_date
+msgid "Fecha"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__file
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__file
+msgid "File"
+msgstr "Archivo"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__file_number
+msgid "File Number"
+msgstr "Número de Archivo"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_follower_ids
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_partner_ids
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__activity_type_icon
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__has_message
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__id
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__id
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__id
+msgid "ID"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_exception_icon
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__activity_exception_icon
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__message_needaction
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__message_unread
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__message_needaction
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__message_has_error
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__message_has_sms_error
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__message_has_error
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_is_follower
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file____last_update
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard____last_update
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__write_uid
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__write_uid
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__write_date
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__write_date
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_main_attachment_id
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_has_error
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_ids
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__my_activity_date_deadline
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__name
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_calendar_event_id
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_date_deadline
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_summary
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_type_id
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__next_business_days
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__imputation_business_days
+msgid "Next Business Days"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_needaction_counter
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_has_error_counter
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__message_needaction_counter
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__message_has_error_counter
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__message_unread_counter
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__payment_acquirer_id
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__payment_acquirer_id
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__payment_acquirer_id
+msgid "Payment Acquirer"
+msgstr "Método de Pago"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__payment_count_ko
+msgid "Payment Count Ko"
+msgstr "Cantidad de Pagos Ko"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__payment_count_ok
+msgid "Payment Count Ok"
+msgstr "Cantidad de Pagos Ok"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_export_direct_debit_wizard__payment_mode_id
+msgid "Payment Mode"
+msgstr "Modo de Pago"
+
+#. module: payment_bank_debit
+#: model_terms:ir.ui.view,arch_db:payment_bank_debit.response_direct_debit_file_form_view
+msgid "Post"
+msgstr "Publicar"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields.selection,name:payment_bank_debit.selection__response_direct_debit_file__state__posted
+msgid "Posted"
+msgstr "Publicado"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__response_direct_debit_file_ids
+msgid "Response Direct Debit File"
+msgstr "Archivo de respuesta Débitos Directos"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__activity_user_id
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_has_sms_error
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model_terms:ir.ui.view,arch_db:payment_bank_debit.export_direct_debit_form_view
+msgid "Save"
+msgstr "Guardar"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__state
+msgid "State"
+msgstr "Estado"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__activity_state
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__total
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__total
+msgid "Total"
+msgstr "Total"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__total_ok
+msgid "Total Ok"
+msgstr "Total Ok"
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__activity_exception_decoration
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_unread
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__message_unread_counter
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,field_description:payment_bank_debit.field_direct_debit_file__website_message_ids
+#: model:ir.model.fields,field_description:payment_bank_debit.field_response_direct_debit_file__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model.fields,help:payment_bank_debit.field_direct_debit_file__website_message_ids
+#: model:ir.model.fields,help:payment_bank_debit.field_response_direct_debit_file__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model,name:payment_bank_debit.model_direct_debit_file
+msgid "direct.debit.file"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model,name:payment_bank_debit.model_export_direct_debit_wizard
+msgid "export.direct.debit.wizard"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model,name:payment_bank_debit.model_res_partner_bank
+msgid "res.partner.bank"
+msgstr ""
+
+#. module: payment_bank_debit
+#: model:ir.model,name:payment_bank_debit.model_response_direct_debit_file
+msgid "response.direct.debit.file"
+msgstr ""

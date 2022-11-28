@@ -1,0 +1,103 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_credicoop
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20221110\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-28 12:45+0000\n"
+"PO-Revision-Date: 2022-11-28 12:45+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: payment_credicoop
+#: model:payment.acquirer,name:payment_credicoop.credicoop_payment_acquirer
+msgid "Banco Credicoop Coop. Ltdo."
+msgstr ""
+
+#. module: payment_credicoop
+#: model:ir.model.fields.selection,name:payment_credicoop.selection__payment_acquirer__provider__bccoopdd
+#: model_terms:ir.ui.view,arch_db:payment_credicoop.credicoop_payment_acquirer_form_view
+msgid "Banco Credicoop Débitos"
+msgstr ""
+
+#. module: payment_credicoop
+#: model:ir.model.fields,field_description:payment_credicoop.field_payment_acquirer__credicoop_bank
+msgid "Bank"
+msgstr "Número de Sucursal"
+
+#. module: payment_credicoop
+#: model:ir.model.fields,field_description:payment_credicoop.field_payment_acquirer__credicoop_company
+msgid "Company"
+msgstr "Compañía"
+
+#. module: payment_credicoop
+#: model_terms:ir.ui.view,arch_db:payment_credicoop.credicoop_payment_acquirer_form_view
+msgid "Credicoop Configuration"
+msgstr "Credicoop Configuración"
+
+#. module: payment_credicoop
+#: model:account.payment.method,name:payment_credicoop.credicoop_account_payment_method
+msgid "Credicoop Debitos Directos"
+msgstr ""
+
+#. module: payment_credicoop
+#: model:ir.model.fields,field_description:payment_credicoop.field_payment_acquirer__credicoop_frequency
+msgid "Frequency"
+msgstr "Frecuencia"
+
+#. module: payment_credicoop
+#: model:ir.model,name:payment_credicoop.model_account_payment_method
+msgid "Payment Methods"
+msgstr "Métodos de Pago"
+
+#. module: payment_credicoop
+#: model:ir.model.fields,field_description:payment_credicoop.field_payment_acquirer__provider
+msgid "Provider"
+msgstr "Proveedor"
+
+#. module: payment_credicoop
+#: model_terms:payment.acquirer,auth_msg:payment_credicoop.credicoop_payment_acquirer
+msgid "Se ha autorizado tu pago."
+msgstr ""
+
+#. module: payment_credicoop
+#: model:ir.model.fields,help:payment_credicoop.field_payment_acquirer__provider
+msgid "The Payment Service Provider to use with this acquirer"
+msgstr "El proveedor de servicios de pago a utilizar con este adquirente"
+
+#. module: payment_credicoop
+#: model_terms:payment.acquirer,cancel_msg:payment_credicoop.credicoop_payment_acquirer
+msgid "Tu pago ha sido cancelado."
+msgstr ""
+
+#. module: payment_credicoop
+#: model_terms:payment.acquirer,pending_msg:payment_credicoop.credicoop_payment_acquirer
+msgid ""
+"Tu pago ha sido procesado con éxito pero está en espera de tu aprobación."
+msgstr ""
+
+#. module: payment_credicoop
+#: model_terms:payment.acquirer,done_msg:payment_credicoop.credicoop_payment_acquirer
+msgid "Tu pago se ha procesado con éxito. ¡Gracias!"
+msgstr ""
+
+#. module: payment_credicoop
+#: model:ir.model,name:payment_credicoop.model_export_direct_debit_wizard
+msgid "export.direct.debit.wizard"
+msgstr ""
+
+#. module: payment_credicoop
+#: model:ir.model,name:payment_credicoop.model_payment_acquirer
+msgid "payment.acquirer"
+msgstr ""
+
+#. module: payment_credicoop
+#: model:ir.model,name:payment_credicoop.model_response_direct_debit_file
+msgid "response.direct.debit.file"
+msgstr ""

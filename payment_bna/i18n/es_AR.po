@@ -1,0 +1,103 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_bna
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20221110\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-28 12:44+0000\n"
+"PO-Revision-Date: 2022-11-28 12:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: payment_bna
+#: model:ir.model.fields,field_description:payment_bna.field_payment_acquirer__bna_acc_number
+msgid "Account"
+msgstr "Número de Cuenta"
+
+#. module: payment_bna
+#: model:ir.model.fields,field_description:payment_bna.field_payment_acquirer__bna_acc_type
+msgid "Account Type"
+msgstr "Tipo de Cuenta"
+
+#. module: payment_bna
+#: model_terms:ir.ui.view,arch_db:payment_bna.bna_payment_acquirer_form_view
+msgid "BNA Configuration"
+msgstr "BNA Configuración"
+
+#. module: payment_bna
+#: model:account.payment.method,name:payment_bna.bna_account_payment_method
+msgid "BNA Debitos Directos"
+msgstr ""
+
+#. module: payment_bna
+#: model:payment.acquirer,name:payment_bna.bna_payment_acquirer
+msgid "Banco de la Nación Argentina"
+msgstr ""
+
+#. module: payment_bna
+#: model:ir.model.fields.selection,name:payment_bna.selection__payment_acquirer__provider__bnadd
+#: model_terms:ir.ui.view,arch_db:payment_bna.bna_payment_acquirer_form_view
+msgid "Banco de la Nación Argentina Débitos"
+msgstr ""
+
+#. module: payment_bna
+#: model:ir.model.fields,field_description:payment_bna.field_payment_acquirer__bna_bank
+msgid "Bank"
+msgstr "Número de Sucursal"
+
+#. module: payment_bna
+#: model:ir.model,name:payment_bna.model_account_payment_method
+msgid "Payment Methods"
+msgstr "Métodos de Pago"
+
+#. module: payment_bna
+#: model:ir.model.fields,field_description:payment_bna.field_payment_acquirer__provider
+msgid "Provider"
+msgstr "Proveedor"
+
+#. module: payment_bna
+#: model_terms:payment.acquirer,auth_msg:payment_bna.bna_payment_acquirer
+msgid "Se ha autorizado tu pago."
+msgstr ""
+
+#. module: payment_bna
+#: model:ir.model.fields,help:payment_bna.field_payment_acquirer__provider
+msgid "The Payment Service Provider to use with this acquirer"
+msgstr "El proveedor de servicios de pago a utilizar con este adquirente"
+
+#. module: payment_bna
+#: model_terms:payment.acquirer,cancel_msg:payment_bna.bna_payment_acquirer
+msgid "Tu pago ha sido cancelado."
+msgstr ""
+
+#. module: payment_bna
+#: model_terms:payment.acquirer,pending_msg:payment_bna.bna_payment_acquirer
+msgid ""
+"Tu pago ha sido procesado con éxito pero está en espera de tu aprobación."
+msgstr ""
+
+#. module: payment_bna
+#: model_terms:payment.acquirer,done_msg:payment_bna.bna_payment_acquirer
+msgid "Tu pago se ha procesado con éxito. ¡Gracias!"
+msgstr ""
+
+#. module: payment_bna
+#: model:ir.model,name:payment_bna.model_export_direct_debit_wizard
+msgid "export.direct.debit.wizard"
+msgstr ""
+
+#. module: payment_bna
+#: model:ir.model,name:payment_bna.model_payment_acquirer
+msgid "payment.acquirer"
+msgstr ""
+
+#. module: payment_bna
+#: model:ir.model,name:payment_bna.model_response_direct_debit_file
+msgid "response.direct.debit.file"
+msgstr ""

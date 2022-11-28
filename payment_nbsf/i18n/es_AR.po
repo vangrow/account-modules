@@ -1,0 +1,103 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_nbsf
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20221110\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-28 12:44+0000\n"
+"PO-Revision-Date: 2022-11-28 12:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: payment_nbsf
+#: model:ir.model.fields,field_description:payment_nbsf.field_payment_acquirer__nbsf_agreedment
+msgid "Agreedment"
+msgstr "Acuerdo"
+
+#. module: payment_nbsf
+#: model:ir.model.fields.selection,name:payment_nbsf.selection__payment_acquirer__provider__nbsfdd
+#: model_terms:ir.ui.view,arch_db:payment_nbsf.nbsf_payment_acquirer_form_view
+msgid "Banco Santa Fe Débitos"
+msgstr ""
+
+#. module: payment_nbsf
+#: model:ir.model.fields,field_description:payment_nbsf.field_payment_acquirer__nbsf_company
+msgid "Company"
+msgstr "Compañía"
+
+#. module: payment_nbsf
+#: model:ir.model.fields,field_description:payment_nbsf.field_payment_acquirer__nbsf_header
+msgid "Header"
+msgstr "Cabecera"
+
+#. module: payment_nbsf
+#: model_terms:ir.ui.view,arch_db:payment_nbsf.nbsf_payment_acquirer_form_view
+msgid "NBSF Configuration"
+msgstr "NBSF Configuración"
+
+#. module: payment_nbsf
+#: model:account.payment.method,name:payment_nbsf.nbsf_account_payment_method
+msgid "NBSF Debitos Directos"
+msgstr ""
+
+#. module: payment_nbsf
+#: model:payment.acquirer,name:payment_nbsf.nbsf_payment_acquirer
+msgid "Nuevo Banco de Santa Fe"
+msgstr ""
+
+#. module: payment_nbsf
+#: model:ir.model,name:payment_nbsf.model_account_payment_method
+msgid "Payment Methods"
+msgstr "Métodos de Pago"
+
+#. module: payment_nbsf
+#: model:ir.model.fields,field_description:payment_nbsf.field_payment_acquirer__provider
+msgid "Provider"
+msgstr "Proveedor"
+
+#. module: payment_nbsf
+#: model_terms:payment.acquirer,auth_msg:payment_nbsf.nbsf_payment_acquirer
+msgid "Se ha autorizado tu pago."
+msgstr ""
+
+#. module: payment_nbsf
+#: model:ir.model.fields,help:payment_nbsf.field_payment_acquirer__provider
+msgid "The Payment Service Provider to use with this acquirer"
+msgstr "El proveedor de servicios de pago a utilizar con este adquirente"
+
+#. module: payment_nbsf
+#: model_terms:payment.acquirer,cancel_msg:payment_nbsf.nbsf_payment_acquirer
+msgid "Tu pago ha sido cancelado."
+msgstr ""
+
+#. module: payment_nbsf
+#: model_terms:payment.acquirer,pending_msg:payment_nbsf.nbsf_payment_acquirer
+msgid ""
+"Tu pago ha sido procesado con éxito pero está en espera de tu aprobación."
+msgstr ""
+
+#. module: payment_nbsf
+#: model_terms:payment.acquirer,done_msg:payment_nbsf.nbsf_payment_acquirer
+msgid "Tu pago se ha procesado con éxito. ¡Gracias!"
+msgstr ""
+
+#. module: payment_nbsf
+#: model:ir.model,name:payment_nbsf.model_export_direct_debit_wizard
+msgid "export.direct.debit.wizard"
+msgstr ""
+
+#. module: payment_nbsf
+#: model:ir.model,name:payment_nbsf.model_payment_acquirer
+msgid "payment.acquirer"
+msgstr ""
+
+#. module: payment_nbsf
+#: model:ir.model,name:payment_nbsf.model_response_direct_debit_file
+msgid "response.direct.debit.file"
+msgstr ""
