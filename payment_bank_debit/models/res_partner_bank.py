@@ -10,6 +10,10 @@ class ResPartnerBank(models.Model):
     _inherit = "res.partner.bank"
     _description = 'res.partner.bank'
 
+    _sql_constraints = [
+        ('unique_number', 'unique(sanitized_acc_number, company_id, partner_id)', 'Account Number must be unique'),
+    ]
+
     branch_number = fields.Char(
         string="Branch Number"
     )
