@@ -101,7 +101,7 @@ class ExportDirectDebitWizard(models.TransientModel):
             vat = re.sub('[^0-9]+', '', registry[acc_number][invoice]['vat'])
             data_registry += vat.rjust(11, "0")[:11]
             # 9 - Denominación de cuenta - tipo: alfanumérico - long.: 16 - decimales: 0
-            partner_name = re.sub('[^A-Za-z0-9]+', '', registry[acc_number][invoice]['partner_name'].upper())
+            partner_name = re.sub('[^A-Za-z0-9 ]+', '', registry[acc_number][invoice]['partner_name'].upper())
             data_registry += partner_name.ljust(16, " ")[
                 :16]
             # 10 - Referencia Unívoca débito - tipo: alfanumérico - long.: 15 - decimales: 0
