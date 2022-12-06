@@ -150,7 +150,7 @@ class ExportDirectDebitWizard(models.TransientModel):
             'next_business_days': self.imputation_business_days,
             'count': count,
             'total': total,
-            'file': base64.b64encode("\n".join([header + data_registry]).encode('ascii')),
+            'file': base64.b64encode("\n".join([header + data_registry]).encode('ascii', errors='ignore')),
             'payment_acquirer_id': self.payment_acquirer_id.id,
             'description': self.payment_mode_id.name + ' ' + filename + ' ' + self.file_date.strftime('%d/%m/%Y'),
         }
