@@ -30,6 +30,6 @@
         binding_views="list"
         view_mode="form"
         target="new"
-        groups="base.group_no_one" />
+         />
 
 </odoo>
