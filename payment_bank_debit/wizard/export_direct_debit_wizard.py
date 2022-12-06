@@ -29,6 +29,10 @@ class ExportDirectDebitWizard(models.TransientModel):
         string="Next Business Days",
         default=((datetime.datetime.today() + BDay(2)) - datetime.datetime.today()).days
     )
+    file_number = fields.Integer(
+        sting="File Number",
+        default=1
+    )
 
     @api.onchange('payment_acquirer_id')
     def onchange_payment_acquirer_id(self):

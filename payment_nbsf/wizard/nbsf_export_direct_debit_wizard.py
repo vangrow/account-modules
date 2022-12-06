@@ -126,7 +126,7 @@ class ExportDirectDebitWizard(models.TransientModel):
         # 4 - Fecha de Archivo - tipo: numérico - long.: 8 - decimales: 0
         header += self.file_date.strftime("%Y%m%d")[:8]
         # 5 - Número de archivo - tipo: numérico - long.: 6 - decimales: 0
-        header += "000001"
+        header += str(self.file_number).rjust(6,"0")[:6]
         # 6 - Monto - sumatoria - tipo: numérico - long.: 14 - decimales: 3
         header += str(int(round(total, 3)*1000)).rjust(14, "0")[:14]
         # 7 - Cantidad de regiatros - tipo: numérico - long.: 6 - decimales: 0

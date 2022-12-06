@@ -11,9 +11,11 @@
                         <field name="payment_acquirer_id" options="{'no_create': True, 'no_create_edit':True}" />
                         <field name="payment_mode_id" options="{'no_create': True, 'no_create_edit':True}" attrs="{'invisible': [('payment_acquirer_id', '=', False)]}"/>
                         <field name="file_date" options="{'format': 'DD/MM/YYYY'}" />
+                    </group>
+                    <group name="group_top_right">
+                        <field name="file_number" />
                         <field name="imputation_business_days" />
                     </group>
-                    <group name="group_top_right"></group>
                 </group>
                 <footer>
                     <button type="object" name="file_save" string="Save" attrs="{'invisible': 0}" />
