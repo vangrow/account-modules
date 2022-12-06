@@ -143,7 +143,7 @@ class ExportDirectDebitWizard(models.TransientModel):
         registry_3 += '0'.rjust(6, "0")[:6]
         # 5 - Filler - tipo: alfanumérico - long.: 85 - decimales: 0
         registry_3 += ' '.ljust(85, " ")[:85]
-        registry_3 += "\r\n"
+        #registry_3 += "\r\n"
 
         # Direct Debit File
         direct_debit_file = self.env['direct.debit.file']
