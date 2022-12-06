@@ -5,7 +5,7 @@ from odoo import api, fields, models
 from odoo.exceptions import ValidationError, UserError
 from odoo.tools.translate import _
 
-import datetime
+import re
 from pandas.tseries.offsets import BDay
 import base64
 from uuid import uuid4
@@ -98,10 +98,11 @@ class ExportDirectDebitWizard(models.TransientModel):
             # 7 - Número de comprobante - tipo: numérico - long.: 10 - decimales: 0
             data_registry += "0".rjust(10, "0")[:10]
             # 8 - CUIT/CUIL/DNI/DOC - tipo: numérico - long.: 11 - decimales: 0
-            data_registry += registry[acc_number][invoice]['vat'].replace('-','').rjust(11, "0")[
-                :11]
+            vat = re.sub('[^0-9]+', '', registry[acc_number][invoice]['vat'])
+            data_registry += vat.rjust(11, "0")[:11]
             # 9 - Denominación de cuenta - tipo: alfanumérico - long.: 16 - decimales: 0
-            data_registry += registry[acc_number][invoice]['partner_name'].upper().ljust(16, " ")[
+            partner_name = re.sub('[^A-Za-z0-9]+', '', registry[acc_number][invoice]['partner_name'].upper())
+            data_registry += partner_name.ljust(16, " ")[
                 :16]
             # 10 - Referencia Unívoca débito - tipo: alfanumérico - long.: 15 - decimales: 0
             data_registry += registry[acc_number][invoice]['company_name'].upper().ljust(15, " ")[
@@ -150,7 +151,7 @@ class ExportDirectDebitWizard(models.TransientModel):
             'next_business_days': self.imputation_business_days,
             'count': count,
             'total': total,
-            'file': base64.b64encode("\n".join([header + data_registry]).encode('ascii', errors='ignore')),
+            'file': base64.b64encode("\n".join([header + data_registry[:-1]]).encode('ascii', errors='ignore')),
             'payment_acquirer_id': self.payment_acquirer_id.id,
             'description': self.payment_mode_id.name + ' ' + filename + ' ' + self.file_date.strftime('%d/%m/%Y'),
         }
