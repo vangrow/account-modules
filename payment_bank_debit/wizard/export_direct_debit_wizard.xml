@@ -29,7 +29,6 @@
         binding_model="account.move"
         binding_views="list"
         view_mode="form"
-        target="new"
-         />
+        target="new" />
 
 </odoo>
