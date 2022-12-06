@@ -98,7 +98,7 @@ class ExportDirectDebitWizard(models.TransientModel):
             # 7 - Número de comprobante - tipo: numérico - long.: 10 - decimales: 0
             data_registry += "0".rjust(10, "0")[:10]
             # 8 - CUIT/CUIL/DNI/DOC - tipo: numérico - long.: 11 - decimales: 0
-            data_registry += registry[acc_number][invoice]['vat'].rjust(11, "0")[
+            data_registry += registry[acc_number][invoice]['vat'].replace('-','').rjust(11, "0")[
                 :11]
             # 9 - Denominación de cuenta - tipo: alfanumérico - long.: 16 - decimales: 0
             data_registry += registry[acc_number][invoice]['partner_name'].upper().ljust(16, " ")[
