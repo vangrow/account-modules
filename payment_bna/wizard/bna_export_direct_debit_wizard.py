@@ -71,7 +71,7 @@ class ExportDirectDebitWizard(models.TransientModel):
         # 6 - Identificador - tipo: alfanumérico - long.: 1 - decimales: 0
         registry_1 +=  'E'
         # 7 - Secuencia - tipo: numérico - long.: 4 - decimales: 0
-        registry_1 +=  self.file_date.strftime("%m")[:2] + '01'
+        registry_1 +=  self.file_date.strftime("%m")[:2] + str(self.file_number).rjust(2,"0")[:2]
         # 8 - Fecha imputación - tipo: numérico - long.: 8 - decimales: 0
         registry_1 += (self.file_date + BDay(self.imputation_business_days)).strftime("%Y%m%d")[:8]
         # 9 - Indicador de Empleados BNA - tipo: alfanumérico - long.: 3 - decimales: 0
