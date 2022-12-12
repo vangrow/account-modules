@@ -58,15 +58,18 @@ class ResponseDirectDebitFile(models.Model):
                     [('acc_number', '=', acc_number)])
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
-                    ('partner_id', '=', res_partner_bank_id.partner_id.id),
+                    #('partner_id', '=', res_partner_bank_id.partner_id.id),
                     ('acquirer_reference', '=', res_partner_bank_id.acc_number),
                     ('state','=','pending')
                 ])
                 
-                payment_transaction_id._set_done()
-                payment_transaction_id._reconcile_after_done()
-                total_ok += amount
-                payment_ok += 1
+                if payment_transaction_id:
+                    payment_transaction_id._set_done()
+                    payment_transaction_id._reconcile_after_done()
+                    total_ok += amount
+                    payment_ok += 1
+                else:
+                    payment_ko += 1    
                 
             else:
                 payment_ko += 1

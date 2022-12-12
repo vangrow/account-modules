@@ -59,7 +59,7 @@ class ResponseDirectDebitFile(models.Model):
             # 5 - Importe - tipo: numérico - long.: 14 - decimales: 3
             try:
                 amount = float(data_registry[30:44])/1000
-            except:
+            except: 
                 amount = 0.0
             # 6 - Fecha imputación - tipo: numérico - long.: 8 - decimales: 0
             # 7 - Número de comprobante - tipo: numérico - long.: 10 - decimales: 0
@@ -82,15 +82,18 @@ class ResponseDirectDebitFile(models.Model):
                     [('acc_number', '=', acc_number)])[0]
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
-                    ('partner_id', '=', res_partner_bank_id.partner_id.id),
+                    #('partner_id', '=', res_partner_bank_id.partner_id.id),
                     ('acquirer_reference', '=', res_partner_bank_id.acc_number),
                     ('state','=','pending')
                 ])
-                
-                payment_transaction_id._set_done()
-                payment_transaction_id._reconcile_after_done()
-                total_ok += amount
-                payment_ok += 1
+
+                if payment_transaction_id:
+                    payment_transaction_id._set_done()
+                    payment_transaction_id._reconcile_after_done()
+                    total_ok += amount
+                    payment_ok += 1
+                else:
+                    payment_ko += 1    
             
             elif reject_code != '095' and reject_message != 'SIN NOVEDAD':
                 # Payment Transaction
