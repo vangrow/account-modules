@@ -92,11 +92,11 @@ class ExportDirectDebitWizard(models.TransientModel):
             # 3 - Banco - tipo: numérico - long.: 3 - decimales: 0
             data_registry += self.payment_acquirer_id.credicoop_bank[:3]
             # 4 - Sucursal - tipo: numérico - long.: 3 - decimales: 0
-            data_registry += registry[acc_number][invoice]['branch_number'][:3]
+            data_registry += registry[acc_number][invoice]['branch_number'].rjust(3, "0")[:3]
             # 5 - Tipo de Cuenta - tipo: numérico - long.: 1 - decimales: 0
             data_registry += '0' if registry[acc_number][invoice]['account_type'] == 'cc' else '1'
             # 6 - Número de Cuenta - tipo: numérico - long.: 7 - decimales: 0
-            data_registry += acc_number[:7]
+            data_registry += acc_number.rjust(7, "0")[:7]
             # 7 - Año de Vencimiento - tipo: numérico - long.: 2 - decimales: 0
             data_registry += self.file_date.strftime("%y")[:2]
             # 8 - Mes/Cuota de Vto. - tipo: numérico - long.: 2 - decimales: 0
@@ -106,7 +106,7 @@ class ExportDirectDebitWizard(models.TransientModel):
             # 10 - Turno - tipo: numérico - long.: 3 - decimales: 0
             data_registry += '001'
             # 11 - Identificador - tipo: numérico - long.: 18 - decimales: 0
-            data_registry += registry[acc_number][invoice]['partner_ref'].ljust(18, " ")[:18]
+            data_registry += registry[acc_number][invoice]['partner_ref'].rjust(5, "0")[:5].ljust(18, " ")[:18]
             # 12 - Importe del Débito - tipo: numérico - long.: 11 - decimales: 2
             data_registry += str(int(round(total_registry, 2) * 100)).rjust(11, "0")[:11]
             # 13 - Importe 2 - tipo: numérico - long.: 11 - decimales: 2
