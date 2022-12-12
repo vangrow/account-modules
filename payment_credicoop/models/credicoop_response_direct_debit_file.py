@@ -43,7 +43,10 @@ class ResponseDirectDebitFile(models.Model):
             # 11 - Identificador - tipo: numérico - long.: 18 - decimales: 0
             partner_ref = data_registry[30:48]
             # 12 - Importe del Débito - tipo: numérico - long.: 11 - decimales: 2
-            amount = float(data_registry[48:59])/100
+            try:
+                amount = float(data_registry[48:59])/100
+            except:
+                amount = 0.0
             # 13 - Importe 2 - tipo: numérico - long.: 11 - decimales: 2
             # 14 - Fecha de Pago - tipo: numérico - long.: 6 - decimales: 0
             # 15 - Resultado del Débito - tipo: alfnumérico - long.: 1 - decimales: 0
@@ -56,7 +59,8 @@ class ResponseDirectDebitFile(models.Model):
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
                     ('partner_id', '=', res_partner_bank_id.partner_id.id),
-                    ('acquirer_reference', '=', res_partner_bank_id.acc_number)
+                    ('acquirer_reference', '=', res_partner_bank_id.acc_number),
+                    ('state','=','pending')
                 ])
                 
                 payment_transaction_id._set_done()

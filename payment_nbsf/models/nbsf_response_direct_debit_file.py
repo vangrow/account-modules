@@ -8,6 +8,8 @@ from odoo.tools.translate import _
 import datetime
 import base64
 
+import logging
+_logger = logging.getLogger(__name__)
 
 class ResponseDirectDebitFile(models.Model):
     _inherit = "response.direct.debit.file"
@@ -55,7 +57,10 @@ class ResponseDirectDebitFile(models.Model):
             acc_number = data_registry[6:28].lstrip('0')
             # 4 - Código de operación - tipo: numérico - long.: 2 - decimales: 0
             # 5 - Importe - tipo: numérico - long.: 14 - decimales: 3
-            amount = float(data_registry[30:44])/1000
+            try:
+                amount = float(data_registry[30:44])/1000
+            except:
+                amount = 0.0
             # 6 - Fecha imputación - tipo: numérico - long.: 8 - decimales: 0
             # 7 - Número de comprobante - tipo: numérico - long.: 10 - decimales: 0
             # 8 - CUIT/CUIL/DNI/DOC - tipo: numérico - long.: 11 - decimales: 0
@@ -74,11 +79,12 @@ class ResponseDirectDebitFile(models.Model):
             if reject_code == '000' and reject_message == 'ACEPTADO':
                 # Payment Transaction
                 res_partner_bank_id = self.env['res.partner.bank'].search(
-                    [('acc_number', '=', acc_number)])
+                    [('acc_number', '=', acc_number)])[0]
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
                     ('partner_id', '=', res_partner_bank_id.partner_id.id),
-                    ('acquirer_reference', '=', res_partner_bank_id.acc_number)
+                    ('acquirer_reference', '=', res_partner_bank_id.acc_number),
+                    ('state','=','pending')
                 ])
                 
                 payment_transaction_id._set_done()
@@ -93,14 +99,11 @@ class ResponseDirectDebitFile(models.Model):
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
                     ('partner_id', '=', res_partner_bank_id.partner_id.id),
-                    ('acquirer_reference', '=', res_partner_bank_id.acc_number)
+                    ('acquirer_reference', '=', res_partner_bank_id.acc_number),
+                    ('state','=','pending')
                 ])
-                """
-                payment_transaction_id._set_done()
-                payment_transaction_id._reconcile_after_done()
-                total_ok += amount
-                payment_ok += 1
-                """
+                payment_transaction_id._set_canceled(state_message=reject_code +': '+reject_message)
+                payment_ko += 1
             else:
                 payment_ko += 1
             
