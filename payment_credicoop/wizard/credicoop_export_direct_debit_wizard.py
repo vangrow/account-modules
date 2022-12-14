@@ -125,8 +125,8 @@ class ExportDirectDebitWizard(models.TransientModel):
 
         # Direct Debit File
         direct_debit_file = self.env['direct.debit.file']
-        filename = "Credicoop" + self.payment_acquirer_id.credicoop_company + \
-            '-' + self.file_date.strftime("%d%m%y") + '.txt'
+        filename = "MAIN1" + self.payment_acquirer_id.credicoop_company + \
+            '-' + self.file_date.strftime("%d%m") + '.TXT'
         values = {
             'name': filename,
             'date': self.file_date,

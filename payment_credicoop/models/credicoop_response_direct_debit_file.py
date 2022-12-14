@@ -75,6 +75,6 @@ class ResponseDirectDebitFile(models.Model):
                 payment_ko += 1
                 
         self.payment_count_ok = payment_ok
-        self.payment_count_ko = payment_ko
+        self.payment_count_ko = payment_ko 
         self.total_ok = total_ok
         self.state = 'posted'
