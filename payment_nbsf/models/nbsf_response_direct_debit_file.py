@@ -11,6 +11,7 @@ import base64
 import logging
 _logger = logging.getLogger(__name__)
 
+
 class ResponseDirectDebitFile(models.Model):
     _inherit = "response.direct.debit.file"
     _description = 'response.direct.debit.file'
@@ -54,12 +55,12 @@ class ResponseDirectDebitFile(models.Model):
             # 1 - Sistema - tipo: numérico - long.: 2 - decimales: 0
             # 2 - Reservado - tipo: numérico - long.: 4 - decimales: 0
             # 3 - CBU - tipo: numérico - long.: 22 - decimales: 0
-            acc_number = data_registry[6:28].lstrip('0')
+            acc_number = data_registry[6:28]
             # 4 - Código de operación - tipo: numérico - long.: 2 - decimales: 0
             # 5 - Importe - tipo: numérico - long.: 14 - decimales: 3
             try:
                 amount = float(data_registry[30:44])/1000
-            except: 
+            except:
                 amount = 0.0
             # 6 - Fecha imputación - tipo: numérico - long.: 8 - decimales: 0
             # 7 - Número de comprobante - tipo: numérico - long.: 10 - decimales: 0
@@ -78,13 +79,14 @@ class ResponseDirectDebitFile(models.Model):
 
             if reject_code == '000' and reject_message == 'ACEPTADO':
                 # Payment Transaction
-                res_partner_bank_id = self.env['res.partner.bank'].search(
-                    [('acc_number', '=', acc_number)])[0]
+                #res_partner_bank_id = self.env['res.partner.bank'].search(
+                #    [('acc_number', '=', acc_number)])[0]
+                
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
                     #('partner_id', '=', res_partner_bank_id.partner_id.id),
-                    ('acquirer_reference', '=', res_partner_bank_id.acc_number),
-                    ('state','=','pending')
+                    ('acquirer_reference', '=', acc_number),
+                    ('state', '=', 'pending')
                 ])
 
                 if payment_transaction_id:
@@ -93,23 +95,24 @@ class ResponseDirectDebitFile(models.Model):
                     total_ok += amount
                     payment_ok += 1
                 else:
-                    payment_ko += 1    
-            
+                    payment_ko += 1
+
             elif reject_code != '095' and reject_message != 'SIN NOVEDAD':
                 # Payment Transaction
-                res_partner_bank_id = self.env['res.partner.bank'].search(
-                    [('acc_number', '=', acc_number)])
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
-                    ('partner_id', '=', res_partner_bank_id.partner_id.id),
-                    ('acquirer_reference', '=', res_partner_bank_id.acc_number),
-                    ('state','=','pending')
+                    #('partner_id', '=', res_partner_bank_id.partner_id.id),
+                    ('acquirer_reference', '=', acc_number),
+                    ('state', '=', 'pending')
                 ])
-                payment_transaction_id._set_canceled(state_message=reject_code +': '+reject_message)
+                _logger.info("Test: %s -- %s"%(acc_number,payment_transaction_id))
+
+                payment_transaction_id._set_canceled(
+                    state_message=reject_code + ': '+reject_message)
                 payment_ko += 1
             else:
                 payment_ko += 1
-            
+
         self.payment_count_ok = payment_ok
         self.payment_count_ko = payment_ko
         self.total_ok = total_ok

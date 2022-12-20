@@ -54,12 +54,12 @@ class ResponseDirectDebitFile(models.Model):
             
             if reject_code == '0':
                 # Payment Transaction
-                res_partner_bank_id = self.env['res.partner.bank'].search(
-                    [('acc_number', '=', acc_number)])
+                #res_partner_bank_id = self.env['res.partner.bank'].search(
+                #    [('acc_number', '=', acc_number)])
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
                     #('partner_id', '=', res_partner_bank_id.partner_id.id),
-                    ('acquirer_reference', '=', res_partner_bank_id.acc_number),
+                    ('acquirer_reference', '=', acc_number),
                     ('state','=','pending')
                 ])
                 
