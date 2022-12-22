@@ -11,6 +11,7 @@ import base64
 import logging
 _logger = logging.getLogger(__name__)
 
+
 class ResponseDirectDebitFile(models.Model):
     _inherit = "response.direct.debit.file"
     _description = 'response.direct.debit.file'
@@ -53,42 +54,45 @@ class ResponseDirectDebitFile(models.Model):
             # 14 - Fecha de Pago - tipo: numérico - long.: 6 - decimales: 0
             # 15 - Resultado del Débito - tipo: alfnumérico - long.: 1 - decimales: 0
             reject_code = data_registry[76:77]
-            
+
             if reject_code == '0':
                 # Payment Transaction
-                #res_partner_bank_id = self.env['res.partner.bank'].search(
+                # res_partner_bank_id = self.env['res.partner.bank'].search(
                 #    [('acc_number', '=', acc_number)])
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
                     #('partner_id', '=', res_partner_bank_id.partner_id.id),
-                    ('acquirer_reference', '=', acc_number.lstrip('0')),
-                    ('state','=','pending')
+                    ('state', '=', 'pending'),
+                    '|', ('acquirer_reference', '=', acc_number),
+                    ('acquirer_reference', '=', acc_number.lstrip('0'))
                 ])
-                
+
                 if payment_transaction_id:
                     payment_transaction_id._set_done()
                     payment_transaction_id._reconcile_after_done()
                     total_ok += amount
                     payment_ok += 1
                 else:
-                    payment_ko += 1    
+                    payment_ko += 1
             elif reject_code != '0':
                 # Payment Transaction
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
                     #('partner_id', '=', res_partner_bank_id.partner_id.id),
-                    ('acquirer_reference', '=', acc_number.lstrip('0')),
-                    ('state', '=', 'pending')
+                    ('state', '=', 'pending'),
+                    '|', ('acquirer_reference', '=', acc_number),
+                    ('acquirer_reference', '=', acc_number.lstrip('0'))
                 ])
-                _logger.info("Test: %s -- %s"%(acc_number,payment_transaction_id))
+                _logger.info("Test: %s -- %s" %
+                             (acc_number, payment_transaction_id))
 
                 payment_transaction_id._set_canceled(
                     state_message=reject_code)
                 payment_ko += 1
             else:
                 payment_ko += 1
-                
+
         self.payment_count_ok = payment_ok
-        self.payment_count_ko = payment_ko 
+        self.payment_count_ko = payment_ko
         self.total_ok = total_ok
         self.state = 'posted'
