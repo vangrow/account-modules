@@ -8,6 +8,8 @@ from odoo.tools.translate import _
 import datetime
 import base64
 
+import logging
+_logger = logging.getLogger(__name__)
 
 class ResponseDirectDebitFile(models.Model):
     _inherit = "response.direct.debit.file"
@@ -59,7 +61,7 @@ class ResponseDirectDebitFile(models.Model):
                 payment_transaction_id = self.env['payment.transaction'].search([
                     ('acquirer_id', '=', self.payment_acquirer_id.id),
                     #('partner_id', '=', res_partner_bank_id.partner_id.id),
-                    ('acquirer_reference', '=', acc_number),
+                    ('acquirer_reference', '=', acc_number.lstrip('0')),
                     ('state','=','pending')
                 ])
                 
@@ -70,7 +72,19 @@ class ResponseDirectDebitFile(models.Model):
                     payment_ok += 1
                 else:
                     payment_ko += 1    
-                
+            elif reject_code != '0':
+                # Payment Transaction
+                payment_transaction_id = self.env['payment.transaction'].search([
+                    ('acquirer_id', '=', self.payment_acquirer_id.id),
+                    #('partner_id', '=', res_partner_bank_id.partner_id.id),
+                    ('acquirer_reference', '=', acc_number.lstrip('0')),
+                    ('state', '=', 'pending')
+                ])
+                _logger.info("Test: %s -- %s"%(acc_number,payment_transaction_id))
+
+                payment_transaction_id._set_canceled(
+                    state_message=reject_code)
+                payment_ko += 1
             else:
                 payment_ko += 1
                 
