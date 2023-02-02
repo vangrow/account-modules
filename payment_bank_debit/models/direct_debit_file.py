@@ -24,6 +24,14 @@ class DirectDebitFile(models.Model):
         string="Date",
         readonly=True,
     )
+    state = fields.Selection(
+        selection=[
+            ('draft', "Draft"),
+            ('posted', 'Posted')
+        ],
+        string="State",
+        default='draft',
+    )
     next_business_days = fields.Integer(
         string="Next Business Days",
         readonly=True,
@@ -51,8 +59,12 @@ class DirectDebitFile(models.Model):
     )
     company_id = fields.Many2one('res.company', store=True, copy=False,
                                  string="Company",
-                                 default=lambda self: self.env.user.company_id.id)
+                                 default=lambda self: self.env.company.id)
     currency_id = fields.Many2one('res.currency', string="Currency",
                                   related='company_id.currency_id',
                                   default=lambda
-                                  self: self.env.user.company_id.currency_id.id)
+                                  self: self.env.company.currency_id.id)
+
+    def action_post(self):
+        pass
+ 

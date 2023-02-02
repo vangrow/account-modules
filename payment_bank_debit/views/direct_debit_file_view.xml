@@ -7,7 +7,12 @@
             <field name="model">direct.debit.file</field>
             <field name="arch" type="xml">
                 <form create="false">
-                    <header></header>
+                    <header>
+                        <button name="action_post" string="Post" class="oe_highlight" type="object"
+                            groups="account.group_account_invoice" data-hotkey="v"
+                            attrs="{'invisible': ['|',('state', '!=', 'draft'),('response_direct_debit_file_ids','=',False)]}" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,posted" />
+                    </header>
                     <sheet>
                         <group name="group_top">
                             <group name="group_top_left">
@@ -22,6 +27,7 @@
                                 <field name="payment_acquirer_id" />
                                 <field name="next_business_days" />
                                 <field name="description" />
+                                <field name="company_id" groups="base.group_multi_company" />
                             </group>
                         </group>
                         <group name="gorup_bottom">
@@ -43,7 +49,7 @@
             <field name="name">direct_debit_file_tree_view</field>
             <field name="model">direct.debit.file</field>
             <field name="arch" type="xml">
-                <tree create="false" edit="false">
+                <tree create="false" edit="false" default_order="date desc">
                     <field name="name" />
                     <field name="description" optional="show" />
                     <field name="date" />
@@ -53,9 +59,21 @@
                     <field name="next_business_days" invisible="1" />
                     <field name="total" widget='monetary' optional="hide" />
                     <field name="file" filename="name" optional="hide" />
+                    <field name="company_id" optional="hide" groups="base.group_multi_company" />
+                    <field name="state" widget="badge" decoration-success="state == 'posted'"
+                        decoration-info="state == 'draft'" optional="show" />
                 </tree>
             </field>
         </record>
+
+        <!-- Company-restricted Records -->
+        <record model="ir.rule" id="record_restricted_company_rule">
+            <field name="name">Direct Debit File multi-company</field>
+            <field name="model_id" ref="model_direct_debit_file" />
+            <field name="domain_force">
+                [('company_id', 'in', company_ids)]
+            </field>
+        </record>        
 
         <!-- Direct Debit File ACTIONS window -->
         <record id="action_direct_debit_file" model="ir.actions.act_window">
@@ -65,7 +83,9 @@
         </record>
 
         <!-- Direct Debit File Menu -->
-        <menuitem id="direct_debit_file_menu" name="Direct Debit Files" parent="account.menu_finance_receivables" action="action_direct_debit_file" sequence="220" />
+        <menuitem id="direct_debit_file_menu" name="Direct Debit Files"
+            parent="account.menu_finance_receivables" action="action_direct_debit_file"
+            sequence="220" />
 
     </data>
 </odoo>

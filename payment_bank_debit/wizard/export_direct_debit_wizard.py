@@ -27,7 +27,8 @@ class ExportDirectDebitWizard(models.TransientModel):
     )
     imputation_business_days = fields.Integer(
         string="Next Business Days",
-        default=((datetime.datetime.today() + BDay(2)) - datetime.datetime.today()).days
+        default=((datetime.datetime.today() + BDay(2)) -
+                 datetime.datetime.today()).days
     )
     file_number = fields.Integer(
         sting="File Number",
@@ -36,19 +37,20 @@ class ExportDirectDebitWizard(models.TransientModel):
 
     @api.onchange('payment_acquirer_id')
     def onchange_payment_acquirer_id(self):
-        payment_method_id = self.env['account.payment.method'].search([('code','=',self.payment_acquirer_id.provider)])
+        payment_method_id = self.env['account.payment.method'].search(
+            [('code', '=', self.payment_acquirer_id.provider)])
         if payment_method_id:
-            payment_mode_ids = self.env['account.payment.mode'].search([('payment_method_id','=',payment_method_id.id)])
+            payment_mode_ids = self.env['account.payment.mode'].search(
+                [('payment_method_id', '=', payment_method_id.id)])
             if payment_mode_ids:
                 self.payment_mode_id = payment_mode_ids[0]
-        domain = [('payment_method_id','=',payment_method_id.id)]
+        domain = [('payment_method_id', '=', payment_method_id.id)]
         res = {
             'domain': {
                 'payment_mode_id': domain,
             }
         }
         return res
-        
+
     def file_save(self):
         pass
-  

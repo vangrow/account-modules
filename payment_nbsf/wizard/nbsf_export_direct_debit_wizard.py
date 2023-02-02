@@ -142,6 +142,7 @@ class ExportDirectDebitWizard(models.TransientModel):
         header += "\r\n"
 
         # Direct Debit File
+
         direct_debit_file = self.env['direct.debit.file']
         filename = "NBSF" + self.payment_acquirer_id.nbsf_company + \
             '-' + self.file_date.strftime("%d%m%y") + '.txt'
@@ -151,8 +152,10 @@ class ExportDirectDebitWizard(models.TransientModel):
             'next_business_days': self.imputation_business_days,
             'count': count,
             'total': total,
+            'company_id': self.env.company.id,
             'file': base64.b64encode("\n".join([header + data_registry[:-1]]).encode('ascii', errors='ignore')),
             'payment_acquirer_id': self.payment_acquirer_id.id,
             'description': self.payment_mode_id.name + ' ' + filename + ' ' + self.file_date.strftime('%d/%m/%Y'),
         }
+
         ddf = direct_debit_file.create(values)
