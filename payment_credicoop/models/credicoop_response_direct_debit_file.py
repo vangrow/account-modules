@@ -23,7 +23,7 @@ class ResponseDirectDebitFile(models.Model):
         return res
 
     def credicoop_file_process(self):
-        file_string = base64.b64decode(self.file).decode('utf-8').split('\n')
+        file_string = base64.b64decode(self.file).decode('utf-8','ignore').split('\n')
 
         # Registro Datos
         payment_ok = 0

@@ -23,8 +23,7 @@ class ResponseDirectDebitFile(models.Model):
         return res
 
     def nbsf_file_process(self):
-        file_string = base64.b64decode(self.file).decode('utf-8').split('\n')
-
+        file_string = base64.b64decode(self.file).decode('utf-8','ignore').split('\n')
         # Registro Cabecera
         # 1 - Cabecera - tipo: numérico - long.: 4 - decimales: 0
         header = file_string[0][:4]
