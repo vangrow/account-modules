@@ -115,7 +115,7 @@ class ExportDirectDebitWizard(models.TransientModel):
             # 4 - Cuenta - tipo: numérico - long.: 11 - decimales: 0
             registry_2 += acc_number.rjust(11, "0")[:11]
             # 5 - Importe - tipo: numérico - long.: 15 - decimales: 2
-            registry_2 += str(int(round(total_registry, 3) * 1000)).rjust(15, "0")[:15]
+            registry_2 += str(int(round(total_registry, 3) * 100)).rjust(15, "0")[:15]
             # 6 - Fecha de Vencimiento - tipo: numérico - long.: 8 - decimales: 0
             registry_2 += '0'.rjust(8, "0")[:8]
             # 7 - Estado - tipo: numérico - long.: 1 - decimales: 0
@@ -134,7 +134,7 @@ class ExportDirectDebitWizard(models.TransientModel):
         # 1 - Tipo de Registro - tipo: numérico - long.: 1 - decimales: 0
         registry_3 += '3'
         # 2 - Total a Debitar - tipo: numérico - long.: 15 - decimales: 2
-        registry_3 += str(int(round(total,3) * 1000)).rjust(15, "0")[:15]
+        registry_3 += str(int(round(total,3) * 100)).rjust(15, "0")[:15]
         # 3 - Cantidad de Registros - tipo: numérico - long.: 6 - decimales: 0
         registry_3 += str(count).rjust(6, "0")[:6]
         # 4 - Total Débitos no aplicados - tipo: numérico - long.: 15 - decimales: 2
