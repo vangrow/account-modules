@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Account Bank Book",
+    'name': "Ret/Per de Argentina",
 
-    'summary': """""",
+    'summary': """Reporting for Argentinean Localization""",
 
     'description': """
-        This module is for bank book
+        Reportes de Retenciones/Percepciones Sufridas
             - 
     """,
 
@@ -13,24 +13,20 @@
     'website': "http://www.vangrow.ar",
 
     # for the full list
-    'category': 'Network Device Manage',
-    'version': '1.0',
+    'category': 'Accounting/Localizations/Reporting',
+    'version': '15.0.1.0.0',
     'license': 'LGPL-3',
 
     # any module necessary for this one to work correctly
     'depends': [
-        'base',
-        'mail',
-        'account',
-        'account_reports',
+        'l10n_ar',
+        'account_reports',   
     ],
 
     # always loaded
     'data': [
-        'views/account_bank_book_config_view.xml',
-        'views/account_bank_book_view.xml',
-        'wizard/account_move_line_search_wizard.xml',
-        'wizard/account_move_line_found_wizard.xml',
+        'data/account_financial_report_withholding.xml',
+        'report/account_ar_withholding_line_view.xml',
         'security/ir.model.access.csv',
     ],
 

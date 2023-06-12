@@ -11,6 +11,7 @@
                     <group name="group_top">
                         <group name="group_top_left">
                             <field name="date_real_move" />
+                            <field name="bank_book_journal_id" />
                             <field name="account_move_line_id" />
                         </group>
                         <group name="group_top_right"></group>
@@ -36,6 +37,7 @@
         <field name="arch" type="xml">
             <tree edit='false' create='false'>
                 <field name="date_real_move" optional="show" />
+                <field name="bank_book_journal_id" optional="show"/>
                 <field name="account_move_line_id" optional="hide" />
                 <field name="date" optional="hide" />
                 <field name="date_maturity" optional="hide" />
@@ -53,20 +55,8 @@
         </field>
     </record>
 
-    <!-- Account BankBook SEARCH view -->
-    <record id="account_bankbook_search_view" model="ir.ui.view">
-        <field name="name">account_bankbook_search</field>
-        <field name="model">account.bankbook</field>
-        <field name="arch" type="xml">
-            <search string="Bank Book">
-                <separator name="bank" />
-                <group expand="0" string="Group By..."></group>
-            </search>
-        </field>
-    </record>
-
     <!-- Account BankBook ACTIONS window -->
-    <record id="account_bankbook_menu" model="ir.actions.act_window">
+    <record id="account_bankbook_menu_action" model="ir.actions.act_window">
         <field name="name">Account Bank Book</field>
         <field name="res_model">account.bankbook</field>
         <field name="view_mode">tree,pivot</field>
@@ -85,9 +75,7 @@
     <!-- Account BankBook Title Menu -->
     <menuitem id="account_bankbook_title_menu" name="Account Bank Book" parent="account.menu_finance_entries" sequence="199" />
     <!-- Account BankBook Menu -->
-    <menuitem id="account_bankbook_menu" name="Account BankBook" parent="account_bankbook_title_menu" action="account_bankbook_menu" sequence="199" />
+    <menuitem id="account_bankbook_menu" name="Account BankBook" parent="account_bankbook_title_menu" action="account_bankbook_menu_action" sequence="199" />
     <!-- Account BankBook Generation Menu -->
     <menuitem id="account_bankbook_generation_menu" name="Generate Account BankBook" parent="account_bankbook_title_menu" action="account_bankbook_generate_menu" sequence="210" groups="base.group_no_one" />
-
-
 </odoo>

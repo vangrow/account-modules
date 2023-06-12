@@ -13,11 +13,20 @@ class AccountMoveLineFound(models.TransientModel):
     real_date = fields.Date(
         string="Real Date",
     )
+    bank_book_journal_id = fields.Many2one(
+        comodel_name='account.journal',
+        string="Journal",
+        readonly=True,
+    )
     account_move_line_id = fields.Many2one(
         comodel_name='account.move.line',
-        readonly="True",
+        readonly=True,
     )
-    
+    account_move_line_search = fields.Many2one(
+        comodel_name="account.move.line.search",
+        readonly=True,
+    )
+
     def unlink_found(self):
         record_ids = self._context.get('account_move_line_found_ids')
         record_ids.remove(self.id)

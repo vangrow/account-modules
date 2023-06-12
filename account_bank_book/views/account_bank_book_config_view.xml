@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Main Account BankBook Config FORM view-->
+    <record id="account_bank_book_config_form_view" model="ir.ui.view">
+        <field name="name">account_bank_book_config_form_view</field>
+        <field name="model">bank.book.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group name="group_top">
+                        <group name="group_top_left">
+                            <field name="name" />
+                            <field name="journal_id" />
+                        </group>
+                        <group name="group_top_right">
+                            <field name="create_bank_book_entries" />
+                            <field name="description" />
+                        </group>
+                    </group>
+                    <group name="group_botton">
+                        <field name="bank_book_domain" widget="domain" options="{'model': 'account.move.line', 'in_dialog': true}" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Account BankBook Config TREE view -->
+    <record id="account_bank_book_config_tree_view" model="ir.ui.view">
+        <field name="name">account_bank_book_config_tree_view</field>
+        <field name="model">bank.book.config</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="journal_id" />
+                <field name="bank_book_domain" optional="hide" />
+                <field name="create_bank_book_entries" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Account BankBook Config ACTIONS window -->
+    <record id="account_bank_book_config" model="ir.actions.act_window">
+        <field name="name">Account Bank Book Config</field>
+        <field name="res_model">bank.book.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="account_bank_book_config_tree_view"/>
+    </record>
+
+    <!-- Account BankBook Config Title Menu -->
+    <menuitem id="account_bank_book_config_title_menu" name="Account Bank Book" parent="account.menu_finance_configuration" sequence="199" />
+    <!-- Account BankBook Config -->
+    <menuitem id="account_bank_book_config_menu" name="Account BankBook Config" parent="account_bank_book_config_title_menu" action="account_bank_book_config" sequence="199" />
+</odoo>
+        

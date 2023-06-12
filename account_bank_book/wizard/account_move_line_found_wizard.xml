@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="real_date" />
+                <field name="bank_book_journal_id" />
                 <field name="account_move_line_id" />
                 <button name="unlink_found" string="Unlink" type="object" class="btn-secondary" icon="fa-trash-o" />
             </tree>

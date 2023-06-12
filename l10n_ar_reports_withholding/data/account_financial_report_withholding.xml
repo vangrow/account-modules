@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_l10n_ar_withholding_report" model="ir.actions.client">
+        <field name="name">Retenciones</field>
+        <field name="tag">account_report</field>
+        <field name="context" eval="{'model': 'account.report', 'report': 'withholding', 'journal_type': 'cash'}"/>
+    </record>
+
+    <menuitem
+        id="menu_l10n_ar_withholding_report"
+        action="action_l10n_ar_withholding_report"
+        parent="l10n_ar.account_reports_ar_statements_menu"
+        sequence="240"/>
+
+</odoo>

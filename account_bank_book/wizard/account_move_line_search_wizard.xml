@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <form>
                 <group name="group_top">
+                    <field name="account_bank_book_id" />
                     <field name="date_from" />    
                     <field name="date_to" />    
                     <field name="domain" widget="domain" options="{'model': 'account.move.line', 'in_dialog': true}"/>
@@ -16,7 +17,7 @@
                 </group>
                 <footer>
                     <button type="object" name="account_move_line_search" string="Search" />
-                    <button type="object" name="account_move_line_save" string="Save" attrs="{'invisible': [('account_move_line_found_ids', '=', [])]}" />
+                    <button type="object" name="account_move_line_save" string="Save" attrs="{'invisible': [('account_move_line_found_ids','=',[])]}"/>
                     <button special="cancel" string="Cancel" class="btn-primary" />
                 </footer>
             </form>

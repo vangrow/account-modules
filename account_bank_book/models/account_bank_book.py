@@ -17,8 +17,15 @@ class AccountBankBook(models.Model):
     account_move_line_id = fields.Many2one(
         comodel_name="account.move.line",
         string="Account Move Line",
+        ondelete='cascade',
         readonly=True
     ) 
+    bank_book_journal_id = fields.Many2one(
+        comodel_name='account.journal',
+        string="Bank Book",
+        ondelete='cascade',
+        readonly=True,
+    )
     search_ids = fields.Char(
         compute='_compute_search_ids',
         search='search_ids_search',
