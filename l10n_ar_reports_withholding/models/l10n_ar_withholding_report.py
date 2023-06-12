@@ -8,9 +8,7 @@ from collections import OrderedDict
 from odoo.tools.misc import format_date
 from odoo.tools.float_utils import float_split_str
 import re
-import json
 import base64
-import io
 
 
 class L10nARWithholdingReport(models.AbstractModel):
