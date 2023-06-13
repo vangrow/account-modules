@@ -28,7 +28,7 @@ class AccountMove(models.Model):
                             'bank_book_journal_id': bank_book_configd_id.id,
                             'account_move_line_id': account_move_line_id.id,
                         }
-                        if self.env['account.bankbook'].search([('account_move_line_id', '=', account_move_line_id.id)]):
+                        if self.env['account.bankbook'].sudo().search([('account_move_line_id', '=', account_move_line_id.id)]):
                             record_id = self.env['account.bankbook'].sudo().write(vals)
                         else:
                             record_id = self.env['account.bankbook'].sudo().create(vals)               
