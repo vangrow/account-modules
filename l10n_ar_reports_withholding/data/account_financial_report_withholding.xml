@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="action_l10n_ar_withholding_report" model="ir.actions.client">
-        <field name="name">Retenciones</field>
+        <field name="name">Retenciones de Ganancias</field>
         <field name="tag">account_report</field>
         <field name="context" eval="{'model': 'account.report', 'report': 'withholding', 'journal_type': 'cash'}"/>
     </record>
