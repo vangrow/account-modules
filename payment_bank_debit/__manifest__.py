@@ -14,7 +14,7 @@
 
     # for the full list
     'category': 'Account',
-    'version': '15.0.0.1',
+    'version': '15.0.0.2',
     'license': 'LGPL-3',
 
     # any module necessary for this one to work correctly
