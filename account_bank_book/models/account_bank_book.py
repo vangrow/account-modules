@@ -19,18 +19,21 @@ class AccountBankBook(models.Model):
         string="Account Move Line",
         ondelete='cascade',
         readonly=True
-    ) 
-    bank_book_journal_id = fields.Many2one(
-        comodel_name='account.journal',
-        string="Bank Book",
-        ondelete='cascade',
-        readonly=True,
     )
+    account_bank_book_id = fields.Many2one(
+        comodel_name='bank.book.config',
+        string="Bank Book",
+        required=True,
+    ) 
     search_ids = fields.Char(
         compute='_compute_search_ids',
         search='search_ids_search',
     )
     # Related fields
+    bank_book_journal = fields.Many2one(
+        string="Bank Book Journal",
+        related="account_bank_book_id.journal_id",
+    )
     date = fields.Date(
         related='account_move_line_id.date',
     )

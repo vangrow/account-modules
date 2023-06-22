@@ -30,9 +30,9 @@ class AccountMoveLineSearch(models.TransientModel):
             'date_to', datetime.datetime.today())
     )
     account_bank_book_id = fields.Many2one(
+        comodel_name='bank.book.config',
         string="Bank Book",
         required=True,
-        comodel_name='bank.book.config',
         default=lambda self: self.env.context.get(
             'account_bank_book_id', False)
     )
@@ -67,6 +67,7 @@ class AccountMoveLineSearch(models.TransientModel):
         for account_move_line_id in account_move_line_ids:
             vals = {
                 'real_date': account_move_line_id.date if not account_move_line_id.date_maturity else account_move_line_id.date_maturity,
+                'account_bank_book_id': self.account_bank_book_id.id,
                 'bank_book_journal_id': self.account_bank_book_id.journal_id.id,
                 'account_move_line_id': account_move_line_id.id,
             }
@@ -97,7 +98,7 @@ class AccountMoveLineSearch(models.TransientModel):
         for record_id in record_ids:
             vals = {
                 'date_real_move': record_id.real_date,
-                'bank_book_journal_id': record_id.bank_book_journal_id.id,
+                'account_bank_book_id': record_id.account_bank_book_id.id,
                 'account_move_line_id': record_id.account_move_line_id.id,
             }
             if self.env['account.bankbook'].search([('account_move_line_id', '=', record_id.account_move_line_id.id)]):

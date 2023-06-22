@@ -11,7 +11,7 @@
                     <group name="group_top">
                         <group name="group_top_left">
                             <field name="date_real_move" />
-                            <field name="bank_book_journal_id" />
+                            <field name="bank_book_journal" />
                             <field name="account_move_line_id" />
                         </group>
                         <group name="group_top_right"></group>
@@ -37,7 +37,8 @@
         <field name="arch" type="xml">
             <tree edit='false' create='false'>
                 <field name="date_real_move" optional="show" />
-                <field name="bank_book_journal_id" optional="show"/>
+                <field name="account_bank_book_id" optional="show" />
+                <field name="bank_book_journal" optional="hide"/>
                 <field name="account_move_line_id" optional="hide" />
                 <field name="date" optional="hide" />
                 <field name="date_maturity" optional="hide" />

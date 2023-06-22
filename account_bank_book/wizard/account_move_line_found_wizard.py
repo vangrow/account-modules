@@ -13,6 +13,11 @@ class AccountMoveLineFound(models.TransientModel):
     real_date = fields.Date(
         string="Real Date",
     )
+    account_bank_book_id = fields.Many2one(
+        comodel_name='bank.book.config',
+        string="Bank Book",
+        readonly=True,
+    )
     bank_book_journal_id = fields.Many2one(
         comodel_name='account.journal',
         string="Journal",
