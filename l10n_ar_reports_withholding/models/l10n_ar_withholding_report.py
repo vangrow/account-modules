@@ -237,7 +237,7 @@ class L10nARWithholdingReport(models.AbstractModel):
         attachment_id = self.env['ir.attachment'].sudo().create(values)
         download_url = '/web/content/' + \
             str(attachment_id.id) + '?download=True'
-        base_url = self.env['ir.config_parameter'].get_param('web.base.url')
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         return {
             "type": "ir.actions.act_url",
             "url": str(base_url) + str(download_url),
