@@ -9,8 +9,7 @@
 			<xpath
 				expr="//form//sheet//notebook//page//field[@name='invoice_line_ids']//tree//field[@name='price_unit']"
 				position="after">
-				<field name="commission" optional="show" widget="monetary"
-					attrs="{'column_invisible': [('parent.l10n_latam_document_type_id_code','not in',['43','45','46','48','60','61','63','64','65'])]}" />
+				<field name="commission" optional="show" widget="monetary" />
 			</xpath>
 		</field>
 	</record>
