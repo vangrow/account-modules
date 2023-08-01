@@ -10,7 +10,7 @@ class AccountMoveLine(models.Model):
     _description = 'account.move.line'
 
     commission = fields.Float(
-        string="Comisión",
+        string="Com./Bon.",
         default=0.0,
         readonly=True,
         compute='_compute_commission'
