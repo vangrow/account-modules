@@ -19,4 +19,4 @@ class AccountMoveLine(models.Model):
     @api.depends('discount','price_unit')
     def _compute_commission(self):
         for rec in self:
-            rec.commission = (rec.price_unit * rec.discount)/100
+            rec.commission = abs(rec.quantity*(rec.price_unit * rec.discount)/100)
