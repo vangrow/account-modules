@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Factura Liquidaciones 63, 64 y 65 -->
+        <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+            <t t-set="o" t-value="o.with_context(lang=lang)" />
+            <xpath expr="//table[@name='invoice_line_table']//thead//tr[1]//th[3]" position="after">
+                <th name="th_commission">
+                    <span>Com./Bon.</span>
+                </th>
+            </xpath>
+            <xpath expr="//table[@name='invoice_line_table']//tbody//tr[1]//td[3]" position="after">
+                <td class="text-right">
+                    <span t-field="o.currency_id.symbol" />
+                    <span t-field="line.commission" />
+                </td>
+            </xpath>
+        </template>
+    </data>
+</odoo>
