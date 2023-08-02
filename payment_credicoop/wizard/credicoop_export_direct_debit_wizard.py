@@ -98,11 +98,11 @@ class ExportDirectDebitWizard(models.TransientModel):
             # 6 - Número de Cuenta - tipo: numérico - long.: 7 - decimales: 0
             data_registry += acc_number.rjust(7, "0")[:7]
             # 7 - Año de Vencimiento - tipo: numérico - long.: 2 - decimales: 0
-            data_registry += (self.file_date + BDay(self.imputation_business_days)).strftime("%y")[:2]
+            data_registry += self.file_date.strftime("%y")[:2]
             # 8 - Mes/Cuota de Vto. - tipo: numérico - long.: 2 - decimales: 0
-            data_registry += (self.file_date + BDay(self.imputation_business_days)).strftime("%m")[:2]
+            data_registry += self.file_date.strftime("%m")[:2]
             # 9 - Fecha de Vto. - tipo: numérico - long.: 6 - decimales: 0
-            data_registry += (self.file_date + BDay(self.imputation_business_days)).strftime("%d%m%y")[:6]
+            data_registry += self.file_date.strftime("%d%m%y")[:6]
             # 10 - Turno - tipo: numérico - long.: 3 - decimales: 0
             data_registry += '001'
             # 11 - Identificador - tipo: numérico - long.: 18 - decimales: 0
