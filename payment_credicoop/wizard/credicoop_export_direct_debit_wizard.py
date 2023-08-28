@@ -100,7 +100,7 @@ class ExportDirectDebitWizard(models.TransientModel):
             # 7 - Año de Vencimiento - tipo: numérico - long.: 2 - decimales: 0
             data_registry += (self.file_date + BDay(self.imputation_business_days)).strftime("%y")[:2]
             # 8 - Mes/Cuota de Vto. - tipo: numérico - long.: 2 - decimales: 0
-            data_registry += (self.file_date + BDay(self.imputation_business_days)).strftime("%y")[:2]
+            data_registry += (self.file_date + BDay(self.imputation_business_days)).strftime("%m")[:2]
             # 9 - Fecha de Vto. - tipo: numérico - long.: 6 - decimales: 0
             data_registry += (self.file_date + BDay(self.imputation_business_days)).strftime("%d%m%y")[:6]
             # 10 - Turno - tipo: numérico - long.: 3 - decimales: 0

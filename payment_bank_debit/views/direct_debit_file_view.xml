@@ -17,6 +17,7 @@
                         <group name="group_top">
                             <group name="group_top_left">
                                 <field name="name" />
+                                <field name="control_file_name" attrs="{'invicible': 1}"/>
                                 <field name="date" />
                                 <field name="count" />
                                 <field name="currency_id" invisible="1" />
@@ -24,6 +25,7 @@
                             </group>
                             <group name="group_top_right">
                                 <field name="file" filename="name" />
+                                <field name="control_file" filename="control_file_name" attrs="{'invicible': [('control_file','=',False)]}"/>
                                 <field name="payment_acquirer_id" />
                                 <field name="next_business_days" />
                                 <field name="description" />

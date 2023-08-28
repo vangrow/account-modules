@@ -15,6 +15,10 @@ class DirectDebitFile(models.Model):
         string="Name",
         readonly=True
     )
+    control_file_name = fields.Char(
+        string="Control File Name",
+        readonly=True
+    )
     payment_acquirer_id = fields.Many2one(
         comodel_name="payment.acquirer",
         string="Payment Acquirer",
@@ -39,6 +43,9 @@ class DirectDebitFile(models.Model):
     file = fields.Binary(
         string="File",
         readonly=True,
+    )
+    control_file = fields.Binary(
+        string="File Control",
     )
     description = fields.Char(
         string="Description",

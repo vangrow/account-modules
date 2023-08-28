@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Red Link Pagar Payment Acquirer FORM view -->
+    <record model="ir.ui.view" id="red_link_pagar_payment_acquirer_form_view">
+        <field name="name">red_link_pagar_payment_acquirer_form_view</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.payment_acquirer_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='configuration']" position="before">
+                <page string="Red Link Pagar Configuration" name="red_link_pagar_configuration" attrs="{'invisible': [('provider', '!=', 'rlpagar')]}">
+                    <group>
+                        <group attrs="{'invisible': [('provider', '!=', 'rlpagar')]}" string="Red Link Pagar">
+                            <field name="red_link_company" attrs="{'required': [('provider', '=', 'rlpagar')]}" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
