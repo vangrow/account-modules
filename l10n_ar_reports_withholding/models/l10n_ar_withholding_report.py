@@ -58,9 +58,8 @@ class L10nARWithholdingReport(models.AbstractModel):
         return res
 
     def _get_columns_name(self, options):
-        if not options.get('journal_type'):
-            options.update(
-                {'journal_type': self.env.context.get('journal_type', 'cash')})
+        if not options.get('journal_type') == 'cash' and not options.get('report') == 'withholding':
+            return []
         dynamic_columns = [item.get('name')
                            for item in self._get_dynamic_columns(options)]
         return [
@@ -83,10 +82,8 @@ class L10nARWithholdingReport(models.AbstractModel):
 
     @api.model
     def _get_lines(self, options, line_id=None):
-        journal_type = options.get('journal_type')
-        if not journal_type:
-            journal_type = self.env.context.get('journal_type', 'cash')
-            options.update({'journal_type': journal_type})
+        if not options.get('journal_type') == 'cash' and not options.get('report') == 'withholding':
+            return []
         lines = []
         line_id = 0
         domain = self._get_lines_domain(options)
