@@ -31,17 +31,21 @@ class L10nARWithholdingReport(models.AbstractModel):
         ctx = super(L10nARWithholdingReport, self)._set_context(options)
         if options.get('journal_type'):
             ctx['journal_type'] = options.get('journal_type')
+        if options.get('report'):
+            ctx['report'] = options.get('report')
         return ctx
 
     def print_pdf(self, options):
         options.update({
-            'journal_type': self.env.context.get('journal_type')
+            'journal_type': self.env.context.get('journal_type'),
+            'report': self.env.context.get('report')
         })
         return super(L10nARWithholdingReport, self).print_pdf(options)
 
     def print_xlsx(self, options):
         options.update({
-            'journal_type': self.env.context.get('journal_type')
+            'journal_type': self.env.context.get('journal_type'),
+            'report': self.env.context.get('report')
         })
         return super(L10nARWithholdingReport, self).print_xlsx(options)
 
@@ -58,8 +62,10 @@ class L10nARWithholdingReport(models.AbstractModel):
         return res
 
     def _get_columns_name(self, options):
-        if not options.get('journal_type') == 'cash' and not options.get('report') == 'withholding':
-            return []
+        if not options.get('journal_type'):
+            options.update({'journal_type': self.env.context.get('journal_type', 'cash')})
+        if not options.get('report'):
+            options.update({'report': self.env.context.get('report', 'withholding')}) 
         dynamic_columns = [item.get('name')
                            for item in self._get_dynamic_columns(options)]
         return [
@@ -82,8 +88,14 @@ class L10nARWithholdingReport(models.AbstractModel):
 
     @api.model
     def _get_lines(self, options, line_id=None):
-        if not options.get('journal_type') == 'cash' and not options.get('report') == 'withholding':
-            return []
+        journal_type = options.get('journal_type')
+        report = options.get('report')
+        if not journal_type:
+            journal_type = self.env.context.get('journal_type', 'cash')
+            options.update({'journal_type': journal_type})
+        if not report:
+            report = self.env.context.get('report', 'withholding')
+            options.update({'report': report})
         lines = []
         line_id = 0
         domain = self._get_lines_domain(options)
