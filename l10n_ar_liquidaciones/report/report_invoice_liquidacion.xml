@@ -12,7 +12,7 @@
             <xpath expr="//table[@name='invoice_line_table']//tbody//tr[1]//td[3]" position="after">
                 <td class="text-right">
                     <span t-field="o.currency_id.symbol" />
-                    <span t-field="line.commission" />
+                    <span t-field="line.commission" t-options='{"widget": "float", "precision": 2}'/>
                 </td>
             </xpath>
         </template>
